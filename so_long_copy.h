@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_copy.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/11 22:16:21 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/11 22:17:20 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_map
 	int		p;
 	int		c;
 	int		e;
-	char	*str;
+	char	**str;
 	int		error;
 }	t_map;
 
@@ -57,7 +57,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 /* map.c */
 t_map	print_error_msg(t_map map);
 t_map	map_init(void);
-t_map	map_size(t_map map, char *line);
+t_map	map_size(t_map map);
 t_map	map_check(t_map map);
 t_map	read_map(char *filename);
 
