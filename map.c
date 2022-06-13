@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:03:14 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/13 20:59:50 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/13 21:27:21 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 t_map	print_error_msg(t_map map)
 {
-	if (map.c < 1 || map.p != 1 || map.e != 1)
-		map.error = -1;
 	if (map.error == -1)
 		printf("WRONG MAP\n");
+	if (map.c < 1 || map.p != 1 || map.e != 1)
+		map.error = -1;
 	if (map.c == 0)
 		printf("NEED MORE COLLECTIBLE\n");
 	if (map.p == 0)
@@ -122,3 +122,5 @@ t_map	read_map(char *filename, t_map map)
 	map = print_error_msg(map);
 	return (map);
 }
+
+
