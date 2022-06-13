@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:03:14 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/13 17:08:09 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/13 20:59:50 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_map	print_error_msg(t_map map)
 	return (map);
 }
 
-t_map	map_check_size(t_map map) //가로, 세로, 직사각형인지?
+t_map	map_check_size(t_map map)
 {
 	int	i;
 
@@ -47,26 +47,11 @@ t_map	map_check_size(t_map map) //가로, 세로, 직사각형인지?
 	return (map);
 }
 
-t_map	map_check_wall(t_map map) //가로세로 벽 확인
+t_map	map_check_wall(t_map map)
 {
 	int	h;
 	int	w;
-/*
-	h = 0;
-	w = 0;
-	while (w < map.wid)
-	{
-		if (map.str[0][w] != '1' || map.str[map.hei - 1][w] != '1')
-			map.error = -1;
-		w++;
-	}
-	while (h < map.hei)
-	{
-		if (map.str[h][0] != '1' || map.str[h][map.wid - 1] != '1')
-			map.error = -1;
-		h++;
-	}
-*/
+
 	h = 0;
 	while (h < map.hei)
 	{
@@ -116,8 +101,20 @@ t_map	map_check_element(t_map map)
 	return (map);
 }
 
-t_map	read_map(char *str, t_map map)
+t_map	read_map(char *filename, t_map map)
 {
+	int		fd;
+	char	*line;
+	char	*str;
+	
+	fd = open(filename, O_RDONLY);
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
+		str = ft_strjoin(str, line);
+	}
 	map.str = ft_split(str, '\n');
 	map = map_check_size(map);
 	map = map_check_wall(map);

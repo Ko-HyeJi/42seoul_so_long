@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/13 15:55:57 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/13 20:58:10 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,9 @@ int main(int argc, char **argv)
 	void	*win;
 	int		h;
 	int		w;
-	int		fd;
-	char	*line;
-	char	*str;
 
 	map = map_init();
-	fd = open(argv[1], O_RDONLY);
-	while ((line = get_next_line(fd)))
-		str = ft_strjoin(str, line);
-	map = read_map(str, map);
+	map = read_map(argv[1], map);
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, (map.wid * 50), (map.hei * 50), "so_long");
 	img = img_init(mlx);

@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/13 15:44:53 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/13 20:58:23 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_map	print_error_msg(t_map map);
 t_map	map_check_size(t_map map);
 t_map	map_check_wall(t_map map);
 t_map	map_check_element(t_map map);
-t_map	read_map(char *str, t_map map);
+t_map	read_map(char *filename, t_map map);
 
 /* so_long.c */
 t_map	map_init(void);
