@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/13 22:25:48 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/13 23:01:00 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@
 #define KEY_D 2     //
 #define KEY_ESC 53  // 'W' 'A' 'S' 'D' 'ESC'들의 키보드 코드이다.
 
-typedef	struct	s_param
+typedef struct s_param
 {
-    int	x;
-    int	y;
+	int	x;
+	int	y;
 }	t_param;
 
 typedef struct s_map
@@ -80,7 +80,6 @@ t_map	read_map(char *filename, t_map map);
 t_map	map_init(void);
 t_img	img_init(void *mlx);
 void	param_init(t_param *param);
-int		key_press(int keycode, t_param *param);
 
 /* so_long_utils.c */
 char	*ft_strchr(const char *s, int c);
@@ -92,5 +91,8 @@ static char	**ft_malloc_error(char **str);
 int			word_count(char const *s, char c);
 int			word_len(char const *s, char c);
 char		**ft_split(char const *s, char c);
+
+/* key.c */
+int		key_press(int keycode, t_param *param);
 
 #endif
