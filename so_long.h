@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/13 21:37:38 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/13 22:25:48 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,21 @@
 # include <unistd.h>
 
 # define BUFFER_SIZE 100
+
+#define X_EVENT_KEY_PRESS 2     // mlx_hook 함수의 두 번째 인자인 
+//#define X_EVENT_KEY_RELEASE 3   // x_event에 들어가는 값
+
+#define KEY_W 13    // MacOS의 키보드 코드들이다.          
+#define KEY_A 0     //
+#define KEY_S 1     // 위에서 부터 차례대로
+#define KEY_D 2     //
+#define KEY_ESC 53  // 'W' 'A' 'S' 'D' 'ESC'들의 키보드 코드이다.
+
+typedef	struct	s_param
+{
+    int	x;
+    int	y;
+}	t_param;
 
 typedef struct s_map
 {
@@ -63,6 +78,9 @@ t_map	read_map(char *filename, t_map map);
 
 /* so_long.c */
 t_map	map_init(void);
+t_img	img_init(void *mlx);
+void	param_init(t_param *param);
+int		key_press(int keycode, t_param *param);
 
 /* so_long_utils.c */
 char	*ft_strchr(const char *s, int c);
