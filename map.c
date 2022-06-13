@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:03:14 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/11 21:37:28 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/13 17:08:09 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,98 +31,97 @@ t_map	print_error_msg(t_map map)
 	return (map);
 }
 
-t_map	map_init(void)
-{
-	t_map	map;
-
-	map.hei = 0;
-	map.wid = 0;
-	map.p = 0;
-	map.c = 0;
-	map.e = 0;
-	map.str = "";
-	map.error = 0;
-	return (map);
-}
-
-t_map	map_size(t_map map, char *line)
-{
-	int	cnt;
-
-	map.hei += 1;
-	if (map.hei == 1)
-	{
-		while (line[map.wid] != '\n')
-			map.wid++;
-	}
-	else
-	{
-		cnt = 0;
-		while (line[cnt] != '\n' && line[cnt] != '\0')
-			cnt++;
-		if (cnt != map.wid)
-			map.error = -1;
-	}
-	return (map);
-}
-
-t_map	map_check(t_map map)
+t_map	map_check_size(t_map map) //가로, 세로, 직사각형인지?
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	while (i < map.hei)
+	map.wid = ft_strlen(map.str[0]);
+	while (map.str[i] != NULL)
 	{
-		j = 0;
-		while (j < map.wid + 1)
-		{
-			if (i == 0 || i == map.hei - 1)
-			{	
-				if (j < map.wid && map.str[(map.wid * i) + i + j] != '1')
-					map.error = -1;
-			}
-			else
-			{
-				if ((j == 0 || j == map.wid - 1)
-					&& (map.str[(map.wid * i) + i + j] != '1'))
-					map.error = -1;
-				else if (map.str[(map.wid * i) + i + j] == 'C')
-					map.c++;
-				else if (map.str[(map.wid * i) + i + j] == 'P')
-					map.p++;
-				else if (map.str[(map.wid * i) + i + j] == 'E')
-					map.e++;
-				else if (ft_strchr("10CPE\n\0", map.str[(map.wid * i) + i + j]) == NULL)
-					map.error = -1;
-			}
-			j++;
-		}
+		if (ft_strlen(map.str[i]) != map.wid)
+			map.error = -1;
 		i++;
 	}
-	map = print_error_msg(map);
+	map.hei = i;
 	return (map);
 }
 
-t_map	read_map(char *filename)
+t_map	map_check_wall(t_map map) //가로세로 벽 확인
 {
-	int		fd;
-	char	*line;
-	t_map	map;
-
-	map = map_init();
-	fd = open(filename, O_RDONLY);
-	while (1)
+	int	h;
+	int	w;
+/*
+	h = 0;
+	w = 0;
+	while (w < map.wid)
 	{
-		line = get_next_line(fd);
-		if (line != NULL)
-		{
-			map = map_size(map, line);
-			map.str = ft_strjoin(map.str, line);
-		}
-		else if (line == NULL || map.wid == -1)
-			break ;
+		if (map.str[0][w] != '1' || map.str[map.hei - 1][w] != '1')
+			map.error = -1;
+		w++;
 	}
-	map = map_check(map);
+	while (h < map.hei)
+	{
+		if (map.str[h][0] != '1' || map.str[h][map.wid - 1] != '1')
+			map.error = -1;
+		h++;
+	}
+*/
+	h = 0;
+	while (h < map.hei)
+	{
+		w = 0;
+		while (w < map.wid)
+		{
+			if (h == 0 || h == map.hei - 1)
+			{
+				if (map.str[h][w] != '1')
+					map.error = -1;
+			}
+			else if (w == 0 || w == map.wid - 1)
+			{
+				if (map.str[h][w] != '1')
+					map.error = -1;
+			}
+			w++;
+		}
+		h++;
+	}
+	return (map);
+}
+
+t_map	map_check_element(t_map map)
+{
+	int	h;
+	int	w;
+
+	h = 0;
+	while (h < map.hei)
+	{
+		w = 0;
+		while (w < map.wid)
+		{
+			if (ft_strchr("10PEC", map.str[h][w]) == NULL)
+				map.error = -1;
+			else if (map.str[h][w] == 'P')
+				map.p++;
+			else if (map.str[h][w] == 'E')
+				map.e++;
+			else if (map.str[h][w] == 'C')
+				map.c++;	
+			w++;
+		}
+		h++;
+	}
+	return (map);
+}
+
+t_map	read_map(char *str, t_map map)
+{
+	map.str = ft_split(str, '\n');
+	map = map_check_size(map);
+	map = map_check_wall(map);
+	map = map_check_element(map);
+	map = print_error_msg(map);
 	return (map);
 }

@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/11 22:16:21 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/13 15:44:53 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_map
 	int		p;
 	int		c;
 	int		e;
-	char	*str;
+	char	**str;
 	int		error;
 }	t_map;
 
@@ -56,18 +56,23 @@ char	*ft_strjoin(char const *s1, char const *s2);
 
 /* map.c */
 t_map	print_error_msg(t_map map);
-t_map	map_init(void);
-t_map	map_size(t_map map, char *line);
-t_map	map_check(t_map map);
-t_map	read_map(char *filename);
+t_map	map_check_size(t_map map);
+t_map	map_check_wall(t_map map);
+t_map	map_check_element(t_map map);
+t_map	read_map(char *str, t_map map);
 
 /* so_long.c */
+t_map	map_init(void);
 
 /* so_long_utils.c */
 char	*ft_strchr(const char *s, int c);
 
 /* ft_split.c */
-char	**ft_split(char const *s, char c);
-
+//size_t		ft_strlen(const char *s);
+size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
+static char	**ft_malloc_error(char **str);
+int			word_count(char const *s, char c);
+int			word_len(char const *s, char c);
+char		**ft_split(char const *s, char c);
 
 #endif

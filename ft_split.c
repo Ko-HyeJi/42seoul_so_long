@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_split.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/10 16:03:14 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/11 22:07:37 by hyko             ###   ########.fr       */
+/*   Created: 2022/06/12 00:25:49 by hyko              #+#    #+#             */
+/*   Updated: 2022/06/13 15:44:44 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-size_t	ft_strlen(const char *s)
+/*size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
@@ -20,7 +20,7 @@ size_t	ft_strlen(const char *s)
 	while (s[i] != '\0')
 		i++;
 	return (i);
-}
+}*/
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
@@ -115,19 +115,4 @@ char	**ft_split(char const *s, char c)
 	}
 	str[i] = NULL;
 	return (str);
-}
-
-int main(void)
-{
-	char **str;
-	int	i;
-
-	i = 0;
-	str = ft_split("11111\n10001\n10001\n11111", '\n');
-	while (str[i] != NULL)
-	{
-		printf("%s", str[i]);
-		i++;
-	}
-	return (0);
 }
