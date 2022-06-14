@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/14 23:31:37 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/14 23:58:09 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	img_init(t_img *img, void *mlx)
 	img_h = 50;
 	img->empty = mlx_xpm_file_to_image(mlx, "./images/road.xpm", &img_w, &img_h);
 	img->wall = mlx_xpm_file_to_image(mlx, "./images/block.xpm", &img_w, &img_h);
-	img->player = mlx_xpm_file_to_image(mlx, "./images/rider_4.xpm", &img_w, &img_h);
-	img->exit = mlx_xpm_file_to_image(mlx, "./images/house_4.xpm", &img_w, &img_h);
-	img->collectible = mlx_xpm_file_to_image(mlx, "./images/chicken_5.xpm", &img_w, &img_h);
+	img->player = mlx_xpm_file_to_image(mlx, "./images/rider_R.xpm", &img_w, &img_h);
+	img->exit = mlx_xpm_file_to_image(mlx, "./images/house.xpm", &img_w, &img_h);
+	img->collectible = mlx_xpm_file_to_image(mlx, "./images/chicken.xpm", &img_w, &img_h);
 }
 
 void	print_img(t_map *map)
