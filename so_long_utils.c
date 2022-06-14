@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 21:17:59 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/14 23:55:02 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/15 00:43:18 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,17 @@ void	ft_putnbr(int nb)
 			ft_putnbr(nb * -1 / 10);
 			ft_putnbr(nb * -1 % 10);
 		}
+	}
+}
+
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != 0)
+	{
+		write(1, &str[i], 1);
+		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/14 23:43:02 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/15 00:43:35 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,18 @@
 
 # include "./mlx/mlx.h"
 # include <stdlib.h>
-# include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>
 
 # define BUFFER_SIZE 100
 
-#define X_EVENT_KEY_PRESS 2     // mlx_hook 함수의 두 번째 인자인 
-#define X_EVENT_KEY_RELEASE 3   // x_event에 들어가는 값
+# define X_EVENT_KEY_PRESS 2
 
-#define KEY_W 13    // MacOS의 키보드 코드들이다.          
-#define KEY_A 0     //
-#define KEY_S 1     // 위에서 부터 차례대로
-#define KEY_D 2     //
-#define KEY_ESC 53  // 'W' 'A' 'S' 'D' 'ESC'들의 키보드 코드이다.
+# define KEY_W 13
+# define KEY_A 0 
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_ESC 53
 
 typedef struct s_img
 {
@@ -99,6 +97,7 @@ void	print_img(t_map *map);
 char	*ft_strchr(const char *s, int c);
 void	ft_putchar(char c);
 void	ft_putnbr(int nb);
+void	ft_putstr(char *str);
 
 /* key.c */
 int		key_press(int keycode, t_map *map);

@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:03:14 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/14 23:27:16 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/15 00:45:18 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 void	print_error_msg(t_map *map)
 {
 	if (map->error == -1)
-		printf("WRONG MAP\n");
+		ft_putstr("WRONG MAP\n");
 	if (map->c < 1 || map->p != 1 || map->e != 1)
 		map->error = -1;
 	if (map->c == 0)
-		printf("NEED MORE COLLECTIBLE\n");
+		ft_putstr("NEED MORE COLLECTION\n");
 	if (map->p == 0)
-		printf("NEED A PLAYER\n");
+		ft_putstr("NEED A PLAYER\n");
 	if (map->e == 0)
-		printf("NEED A EXIT\n");
+		ft_putstr("NEED AN EXIT\n");
 	if (map->p > 1)
-		printf("TOO MANY PLAYERS\n");
+		ft_putstr("TOO MANY PLAYERS\n");
 	if (map->e > 1)
-		printf("TOO MANY EXIT\n");
+		ft_putstr("TOO MANY EXIT\n");
 }
 
 void	map_check_size(t_map *map)
