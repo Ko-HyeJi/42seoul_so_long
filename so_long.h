@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/14 14:00:55 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/14 21:32:58 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@
 #define KEY_D 2     //
 #define KEY_ESC 53  // 'W' 'A' 'S' 'D' 'ESC'들의 키보드 코드이다.
 
+typedef struct s_img
+{
+	void	*empty;
+	void	*wall;
+	void	*player;
+	void	*exit;
+	void	*collectible;
+}	t_img;
+
 typedef struct s_map
 {
 	int		hei;
@@ -41,16 +50,17 @@ typedef struct s_map
 	int		error;
 	int		x;
 	int		y;
+	void	*mlx;
+	void	*win;
+	t_img	*img;
 }	t_map;
 
-typedef struct s_img
+typedef	struct s_param
 {
-	void	*empty;
-	void	*wall;
-	void	*player;
-	void	*exit;
-	void	*collectible;
-}	t_img;
+	int	x;
+	int	y;
+}	t_param;
+
 
 /* get_next_line.c */
 char	*get_next_line(int fd);
@@ -73,9 +83,9 @@ void	map_check_element(t_map *map);
 void	read_map(char *filename, t_map *map);
 
 /* so_long.c */
-void	map_init(t_map *map);
 void	img_init(t_img *img, void *mlx);
-void	print_img(void *win, void *mlx, t_map *map, t_img *img);
+void	map_init(t_map *map, t_img *img);
+void	print_img(t_map *map);
 
 /* so_long_utils.c */
 char	*ft_strchr(const char *s, int c);
@@ -90,5 +100,7 @@ char		**ft_split(char const *s, char c);
 
 /* key.c */
 int		key_press(int keycode, t_map *map);
+void	next_step(t_map *map);
+void	next_img_c(t_map *map);
 
 #endif
