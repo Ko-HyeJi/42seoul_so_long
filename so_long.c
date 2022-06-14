@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/14 18:39:38 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/14 23:00:52 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	map_init(t_map *map, t_img *img)
 	map->error = 0;
 	map->x = 0;
 	map->y = 0;
+	map->cnt = 0;
 	map->img = img;
 }
 
@@ -69,13 +70,13 @@ int main(int argc, char **argv)
 {
 	t_img	img;
 	t_map	map;
-	//void	*mlx;
-	//void	*win;
 
 	map.mlx = mlx_init();
 	img_init(&img, map.mlx);
 	map_init(&map, &img);
 	read_map(argv[1], &map);
+	if (map.error == -1)
+		return(0);
 	map.win = mlx_new_window(map.mlx, (map.wid * 50), (map.hei * 50), "so_long");
 
 	mlx_key_hook(map.win, &key_press, &map);

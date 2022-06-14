@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 22:27:28 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/14 22:34:05 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/14 22:58:52 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,50 +14,38 @@
 
 int key_press(int keycode, t_map *map)
 {	
-    printf("(x, y): (%d, %d)\n", map->x, map->y);
-
-    if ((keycode == KEY_W) && map->str[map->y - 1][map->x] != '1')
-	{
-		map->str[map->y][map->x] = '0';
-		map->y--;
-	}
-    else if (keycode == KEY_S && map->str[map->y + 1][map->x] != '1')
-	{
-		map->str[map->y][map->x] = '0';
-        map->y++;
-	}
-    else if (keycode == KEY_A && map->str[map->y][map->x - 1] != '1')
-    {
-		map->str[map->y][map->x] = '0';
-        map->x--;
-	}
-    else if (keycode == KEY_D && map->str[map->y][map->x + 1] != '1' && map->str[map->y][map->x + 1] != 'E')
-    {
-		map->str[map->y][map->x] = '0';
-        map->x++;
-	}
+    //printf("(x, y): (%d, %d)\n", map->x, map->y);
+	t_param	next;
+	next.x = map->x;
+	next.y = map->y;
+	
+    if (keycode == KEY_W)
+		next.y--;
+    else if (keycode == KEY_S)
+		next.y++;
+    else if (keycode == KEY_A)
+		next.x--;
+    else if (keycode == KEY_D)
+		next.x++;
     else if (keycode == KEY_ESC)
         exit(0);
-	next_step(map);
-    return (0);
-}
-
-void	next_step(t_map *map)
-{
-	if (map->str[map->y][map->x] == 'C')
+	if (map->str[next.y][next.x] == 'E' && map->c == 0)
 	{
-		map->c--;
-		printf("%d\n", map->c);
+		map->cnt++;
+		printf("%d\n", map->cnt);
+		exit(0);
 	}
-	/*else if (map->str[map->y][map->x] == 'E')
+	if (map->str[next.y][next.x] != '1' && map->str[next.y][next.x] != 'E')
 	{
-		if (map->c == 0)
-		{
-			exit(0);
-		}
-		else
-			return ;
-	}*/
-	map->str[map->y][map->x] = 'P';
-	print_img(map);
+		map->cnt++;
+		printf("%d\n", map->cnt);
+		if (map->str[next.y][next.x] == 'C')
+			map->c--;
+		map->str[next.y][next.x] = 'P';
+		map->str[map->y][map->x] = '0';
+		map->x = next.x;
+		map->y = next.y;
+		print_img(map);
+	}
+    return (0);
 }

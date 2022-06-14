@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/14 21:32:58 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/14 22:54:46 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_map
 	int		error;
 	int		x;
 	int		y;
+	int		cnt;
 	void	*mlx;
 	void	*win;
 	t_img	*img;
