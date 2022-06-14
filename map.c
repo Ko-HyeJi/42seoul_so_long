@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:03:14 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/13 21:27:21 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/14 13:35:17 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,11 @@ t_map	map_check_element(t_map map)
 			if (ft_strchr("10PEC", map.str[h][w]) == NULL)
 				map.error = -1;
 			else if (map.str[h][w] == 'P')
+			{
 				map.p++;
+				map.x = w;
+				map.y = h;
+			}
 			else if (map.str[h][w] == 'E')
 				map.e++;
 			else if (map.str[h][w] == 'C')
@@ -107,6 +111,7 @@ t_map	read_map(char *filename, t_map map)
 	char	*line;
 	char	*str;
 	
+	str = "";
 	fd = open(filename, O_RDONLY);
 	while (1)
 	{
