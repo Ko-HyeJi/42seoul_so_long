@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/14 13:39:26 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/14 13:46:22 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,11 @@ t_img	img_init(void *mlx)
 	return (img);
 }
 
-int main(int argc, char **argv)
+void	print_img(void *win, void *mlx, t_map map, t_img img)
 {
-	t_img	img;
-	t_map	map;
-	void	*mlx;
-	void	*win;
 	int		h;
 	int		w;
-
-	map = map_init();
-	map = read_map(argv[1], map);
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, (map.wid * 50), (map.hei * 50), "so_long");
-	img = img_init(mlx);
-
+	
 	h = 0;
 	while (h < map.hei)
 	{
@@ -75,7 +65,23 @@ int main(int argc, char **argv)
 		}
 		h++;
 	}
+}
+
+int main(int argc, char **argv)
+{
+	t_img	img;
+	t_map	map;
+	void	*mlx;
+	void	*win;
+
+	map = map_init();
+	map = read_map(argv[1], map);
+	mlx = mlx_init();
+	win = mlx_new_window(mlx, (map.wid * 50), (map.hei * 50), "so_long");
+	img = img_init(mlx);
+
 	mlx_hook(win, X_EVENT_KEY_PRESS, 0, &key_press, &map); // 키를 잡는 함수
+	print_img(win, mlx, map, img);
 	mlx_loop(mlx);
 	return (0);
 }
