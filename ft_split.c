@@ -6,21 +6,11 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 00:25:49 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/13 15:44:44 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/14 23:01:49 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-/*size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}*/
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {

@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 21:17:59 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/13 15:42:57 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/14 23:42:27 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,36 @@ char	*ft_strchr(const char *s, int c)
 	if ((unsigned char)c == '\0')
 		return ((char *)s + i);
 	return (NULL);
+}
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int nb)
+{
+	if (nb >= 0)
+	{
+		if (nb < 10)
+			ft_putchar(nb + '0');
+		else
+		{
+			ft_putnbr(nb / 10);
+			ft_putnbr(nb % 10);
+		}
+	}
+	else if (nb == -2147483648)
+		write(1, "-2147483648", 11);
+	else
+	{
+		write(1, "-", 1);
+		if (-10 < nb)
+			ft_putchar(nb * -1 + '0');
+		else
+		{
+			ft_putnbr(nb * -1 / 10);
+			ft_putnbr(nb * -1 % 10);
+		}
+	}
 }

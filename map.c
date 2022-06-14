@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:03:14 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/14 14:06:11 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/14 23:27:16 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	map_check_element(t_map *map)
 			else if (map->str[h][w] == 'E')
 				map->e++;
 			else if (map->str[h][w] == 'C')
-				map->c++;	
+				map->c++;
 			w++;
 		}
 		h++;
@@ -106,7 +106,7 @@ void	read_map(char *filename, t_map *map)
 	int		fd;
 	char	*line;
 	char	*str;
-	
+
 	str = "";
 	fd = open(filename, O_RDONLY);
 	while (1)

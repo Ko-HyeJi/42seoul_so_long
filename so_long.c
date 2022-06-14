@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/14 23:00:52 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/14 23:31:37 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	print_img(t_map *map)
 {
 	int		h;
 	int		w;
-	
+
 	h = 0;
 	while (h < map->hei)
 	{
@@ -66,7 +66,7 @@ void	print_img(t_map *map)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_img	img;
 	t_map	map;
@@ -76,9 +76,8 @@ int main(int argc, char **argv)
 	map_init(&map, &img);
 	read_map(argv[1], &map);
 	if (map.error == -1)
-		return(0);
+		return (0);
 	map.win = mlx_new_window(map.mlx, (map.wid * 50), (map.hei * 50), "so_long");
-
 	mlx_key_hook(map.win, &key_press, &map);
 	//mlx_hook(win, X_EVENT_KEY_PRESS, 0, &key_press, &map);
 	print_img(&map);
