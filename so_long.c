@@ -6,39 +6,34 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/14 13:46:22 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/14 13:53:06 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_map	map_init(void)
+void	map_init(t_map *map)
 {
-	t_map	map;
-
-	map.hei = 0;
-	map.wid = 0;
-	map.p = 0;
-	map.c = 0;
-	map.e = 0;
-	map.error = 0;
-	map.x = 0;
-	map.y = 0;
-	return (map);
+	map->hei = 0;
+	map->wid = 0;
+	map->p = 0;
+	map->c = 0;
+	map->e = 0;
+	map->error = 0;
+	map->x = 0;
+	map->y = 0;
 }
 
-t_img	img_init(void *mlx)
+void	img_init(t_img *img, void *mlx)
 {
-	t_img	img;
 	int		img_w;
 	int		img_h;
 
-	img.empty = mlx_xpm_file_to_image(mlx, "./images/road.xpm", &img_w, &img_h);
-	img.wall = mlx_xpm_file_to_image(mlx, "./images/block.xpm", &img_w, &img_h);
-	img.player = mlx_xpm_file_to_image(mlx, "./images/rider_4.xpm", &img_w, &img_h);
-	img.exit = mlx_xpm_file_to_image(mlx, "./images/house_3.xpm", &img_w, &img_h);
-	img.collectible = mlx_xpm_file_to_image(mlx, "./images/chicken_5.xpm", &img_w, &img_h);
-	return (img);
+	img->empty = mlx_xpm_file_to_image(mlx, "./images/road.xpm", &img_w, &img_h);
+	img->wall = mlx_xpm_file_to_image(mlx, "./images/block.xpm", &img_w, &img_h);
+	img->player = mlx_xpm_file_to_image(mlx, "./images/rider_4.xpm", &img_w, &img_h);
+	img->exit = mlx_xpm_file_to_image(mlx, "./images/house_3.xpm", &img_w, &img_h);
+	img->collectible = mlx_xpm_file_to_image(mlx, "./images/chicken_5.xpm", &img_w, &img_h);
 }
 
 void	print_img(void *win, void *mlx, t_map map, t_img img)
@@ -74,11 +69,11 @@ int main(int argc, char **argv)
 	void	*mlx;
 	void	*win;
 
-	map = map_init();
+	map_init(&map);
 	map = read_map(argv[1], map);
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, (map.wid * 50), (map.hei * 50), "so_long");
-	img = img_init(mlx);
+	img_init(&img, mlx);
 
 	mlx_hook(win, X_EVENT_KEY_PRESS, 0, &key_press, &map); // 키를 잡는 함수
 	print_img(win, mlx, map, img);

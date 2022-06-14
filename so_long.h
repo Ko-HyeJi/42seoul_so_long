@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/14 13:43:46 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/14 13:52:55 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ t_map	map_check_element(t_map map);
 t_map	read_map(char *filename, t_map map);
 
 /* so_long.c */
-t_map	map_init(void);
-t_img	img_init(void *mlx);
+void	map_init(t_map *map);
+void	img_init(t_img *img, void *mlx);
 void	print_img(void *win, void *mlx, t_map map, t_img img);
 
 /* so_long_utils.c */
