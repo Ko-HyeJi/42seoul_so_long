@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/14 13:52:55 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/14 14:00:55 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,16 @@ char	*ft_substr(char const	*s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 
 /* map.c */
-t_map	print_error_msg(t_map map);
-t_map	map_check_size(t_map map);
-t_map	map_check_wall(t_map map);
-t_map	map_check_element(t_map map);
-t_map	read_map(char *filename, t_map map);
+void	print_error_msg(t_map *map);
+void	map_check_size(t_map *map);
+void	map_check_wall(t_map *map);
+void	map_check_element(t_map *map);
+void	read_map(char *filename, t_map *map);
 
 /* so_long.c */
 void	map_init(t_map *map);
 void	img_init(t_img *img, void *mlx);
-void	print_img(void *win, void *mlx, t_map map, t_img img);
+void	print_img(void *win, void *mlx, t_map *map, t_img *img);
 
 /* so_long_utils.c */
 char	*ft_strchr(const char *s, int c);

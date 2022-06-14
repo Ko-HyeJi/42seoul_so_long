@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/14 13:53:06 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/14 14:00:18 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,26 @@ void	img_init(t_img *img, void *mlx)
 	img->collectible = mlx_xpm_file_to_image(mlx, "./images/chicken_5.xpm", &img_w, &img_h);
 }
 
-void	print_img(void *win, void *mlx, t_map map, t_img img)
+void	print_img(void *win, void *mlx, t_map *map, t_img *img)
 {
 	int		h;
 	int		w;
 	
 	h = 0;
-	while (h < map.hei)
+	while (h < map->hei)
 	{
 		w = 0;
-		while (w < map.wid)
+		while (w < map->wid)
 		{
-			mlx_put_image_to_window(mlx, win, img.empty, w * 50, h * 50);
-			if (map.str[h][w] == '1')
-				mlx_put_image_to_window(mlx, win, img.wall, w * 50, h * 50);
-			else if (map.str[h][w] == 'P')
-				mlx_put_image_to_window(mlx, win, img.player, w * 50, h * 50);
-			else if (map.str[h][w] == 'E')
-				mlx_put_image_to_window(mlx, win, img.exit, w * 50, h * 50);
-			else if (map.str[h][w] == 'C')
-				mlx_put_image_to_window(mlx, win, img.collectible, w * 50, h * 50);
+			mlx_put_image_to_window(mlx, win, img->empty, w * 50, h * 50);
+			if (map->str[h][w] == '1')
+				mlx_put_image_to_window(mlx, win, img->wall, w * 50, h * 50);
+			else if (map->str[h][w] == 'P')
+				mlx_put_image_to_window(mlx, win, img->player, w * 50, h * 50);
+			else if (map->str[h][w] == 'E')
+				mlx_put_image_to_window(mlx, win, img->exit, w * 50, h * 50);
+			else if (map->str[h][w] == 'C')
+				mlx_put_image_to_window(mlx, win, img->collectible, w * 50, h * 50);
 			w++;
 		}
 		h++;
@@ -69,14 +69,14 @@ int main(int argc, char **argv)
 	void	*mlx;
 	void	*win;
 
-	map_init(&map);
-	map = read_map(argv[1], map);
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, (map.wid * 50), (map.hei * 50), "so_long");
 	img_init(&img, mlx);
+	map_init(&map);
+	read_map(argv[1], &map);
+	win = mlx_new_window(mlx, (map.wid * 50), (map.hei * 50), "so_long");
 
 	mlx_hook(win, X_EVENT_KEY_PRESS, 0, &key_press, &map); // 키를 잡는 함수
-	print_img(win, mlx, map, img);
+	print_img(win, mlx, &map, &img);
 	mlx_loop(mlx);
 	return (0);
 }
