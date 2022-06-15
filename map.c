@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:03:14 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/15 00:45:18 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 02:16:22 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	map_check_size(t_map *map)
 	map->wid = ft_strlen(map->str[0]);
 	while (map->str[i] != NULL)
 	{
-		if (ft_strlen(map->str[i]) != map->wid)
+		if ((int)ft_strlen(map->str[i]) != map->wid)
 			map->error = -1;
 		i++;
 	}

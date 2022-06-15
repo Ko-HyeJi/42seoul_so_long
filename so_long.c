@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/15 23:21:45 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 02:11:34 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int	main(int argc, char **argv)
 	t_img	img;
 	t_map	map;
 
+	if (argc != 2)
+		return (0);
 	map.mlx = mlx_init();
 	img_init(&img, map.mlx);
 	map_init(&map, &img);

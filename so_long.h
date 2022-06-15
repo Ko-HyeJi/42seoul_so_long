@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/15 23:19:00 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 02:15:44 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 
 /* ft_split.c */
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
-static char	**ft_malloc_error(char **str);
+//static char	**ft_malloc_error(char **str);
 int			word_count(char const *s, char c);
 int			word_len(char const *s, char c);
 char		**ft_split(char const *s, char c);
