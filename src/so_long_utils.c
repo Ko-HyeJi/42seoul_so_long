@@ -6,11 +6,11 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 21:17:59 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 05:53:37 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 06:34:24 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 char	*ft_strchr(const char *s, int c)
 {

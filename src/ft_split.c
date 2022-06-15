@@ -6,11 +6,11 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 00:25:49 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 02:14:39 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 06:33:52 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {

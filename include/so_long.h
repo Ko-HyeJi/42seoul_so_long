@@ -6,14 +6,14 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 05:46:29 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 06:35:15 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "./mlx/mlx.h"
+# include "../mlx/mlx.h"
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>

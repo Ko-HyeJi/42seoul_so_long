@@ -6,11 +6,11 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 21:00:08 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/11 15:38:22 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 06:34:05 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 size_t	ft_strlen(const char *s)
 {

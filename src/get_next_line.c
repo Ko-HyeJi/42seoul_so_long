@@ -6,11 +6,11 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 20:59:49 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/10 17:04:33 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 06:34:09 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 char	*get_next_line(int fd)
 {
