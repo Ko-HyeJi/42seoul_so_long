@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 22:27:28 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 03:59:00 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 04:55:11 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ void	change_map(t_map *map, t_param *next)
 	}
 }
 
-/*int	click_exit_button(int keycode)
+int	click_red_cross(t_map *map)
 {
-	if (keycode == ON_DESTROY)
-		exit(0);
+	mlx_destroy_window(map->mlx, map->win);
+	exit(0);
 	return (0);
-}*/
+}

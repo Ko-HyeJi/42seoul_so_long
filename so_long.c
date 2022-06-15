@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 03:50:26 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 04:58:03 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	img_init(t_img *img, void *mlx)
 		= mlx_xpm_file_to_image(mlx, "./images/road.xpm", &img_w, &img_h);
 	img->wall
 		= mlx_xpm_file_to_image(mlx, "./images/block.xpm", &img_w, &img_h);
-	img->player_R
+	img->player_r
 		= mlx_xpm_file_to_image(mlx, "./images/rider_R.xpm", &img_w, &img_h);
-	img->player_L
+	img->player_l
 		= mlx_xpm_file_to_image(mlx, "./images/rider_L.xpm", &img_w, &img_h);
 	img->exit
 		= mlx_xpm_file_to_image(mlx, "./images/house.xpm", &img_w, &img_h);
@@ -57,10 +57,10 @@ void	print_img_2(t_map *map, int w, int h)
 			map->mlx, map->win, map->img->wall, w * 50, h * 50);
 	else if (map->str[h][w] == 'P' && map->img->direction == 0)
 		mlx_put_image_to_window(
-			map->mlx, map->win, map->img->player_R, w * 50, h * 50);
+			map->mlx, map->win, map->img->player_r, w * 50, h * 50);
 	else if (map->str[h][w] == 'P' && map->img->direction == 1)
 		mlx_put_image_to_window(
-			map->mlx, map->win, map->img->player_L, w * 50, h * 50);
+			map->mlx, map->win, map->img->player_l, w * 50, h * 50);
 	else if (map->str[h][w] == 'E')
 		mlx_put_image_to_window(
 			map->mlx, map->win, map->img->exit, w * 50, h * 50);
@@ -103,8 +103,7 @@ int	main(int argc, char **argv)
 	map.win
 		= mlx_new_window(map.mlx, (map.wid * 50), (map.hei * 50), "so_long");
 	mlx_key_hook(map.win, &key_press, &map);
-	//mlx_hook(map.win, ON_DESTROY, 0, &click_exit_button, &map);
-	//mlx_hook(win, X_EVENT_KEY_PRESS, 0, &key_press, &map);
+	mlx_hook(map.win, RED_CROSS, 0, &click_red_cross, &map);
 	print_img(&map);
 	mlx_loop(map.mlx);
 	return (0);

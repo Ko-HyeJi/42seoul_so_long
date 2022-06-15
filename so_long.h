@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 04:18:02 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 04:59:36 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 
 # define BUFFER_SIZE 100
 
-# define X_EVENT_KEY_PRESS 2
+# define KEY_PRESS 2
+# define RED_CROSS 17
 
 # define KEY_W 13
 # define KEY_A 0 
@@ -32,12 +33,11 @@ typedef struct s_img
 {
 	void	*empty;
 	void	*wall;
-	void	*player_R;
-	void	*player_L;
+	void	*player_r;
+	void	*player_l;
 	void	*exit;
 	void	*collection;
 	int		direction;
-	
 }	t_img;
 
 typedef struct s_map
@@ -57,12 +57,11 @@ typedef struct s_map
 	t_img	*img;
 }	t_map;
 
-typedef	struct s_param
+typedef struct s_param
 {
 	int	x;
 	int	y;
 }	t_param;
-
 
 /* get_next_line.c */
 char	*get_next_line(int fd);
@@ -78,11 +77,10 @@ char	*ft_substr(char const	*s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 
 /* ft_split.c */
-size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
-//static char	**ft_malloc_error(char **str);
-int			word_count(char const *s, char c);
-int			word_len(char const *s, char c);
-char		**ft_split(char const *s, char c);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+int		word_count(char const *s, char c);
+int		word_len(char const *s, char c);
+char	**ft_split(char const *s, char c);
 
 /* map.c */
 void	print_error_msg(t_map *map);
@@ -105,5 +103,6 @@ void	ft_putstr(char *str);
 /* key.c */
 int		key_press(int keycode, t_map *map);
 void	change_map(t_map *map, t_param *next);
+int		click_red_cross(t_map *map);
 
 #endif
