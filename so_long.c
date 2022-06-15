@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 02:11:34 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 02:28:09 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,10 @@ void	print_img(t_map *map)
 			mlx_put_image_to_window(map->mlx, map->win, map->img->empty, w * 50, h * 50);
 			if (map->str[h][w] == '1')
 				mlx_put_image_to_window(map->mlx, map->win, map->img->wall, w * 50, h * 50);
-			else if (map->str[h][w] == 'P')
-			{
-				if (map->img->direction == 0)
-					mlx_put_image_to_window(map->mlx, map->win, map->img->player_R, w * 50, h * 50);
-				else
-					mlx_put_image_to_window(map->mlx, map->win, map->img->player_L, w * 50, h * 50);
-			}
+			else if (map->str[h][w] == 'P' && map->img->direction == 0)
+				mlx_put_image_to_window(map->mlx, map->win, map->img->player_R, w * 50, h * 50);
+			else if (map->str[h][w] == 'P' && map->img->direction == 1)
+				mlx_put_image_to_window(map->mlx, map->win, map->img->player_L, w * 50, h * 50);
 			else if (map->str[h][w] == 'E')
 				mlx_put_image_to_window(map->mlx, map->win, map->img->exit, w * 50, h * 50);
 			else if (map->str[h][w] == 'C')
