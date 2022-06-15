@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:03:14 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 03:56:26 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 05:53:22 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,8 @@ void	read_map(char *filename, t_map *map)
 
 	str = "";
 	fd = open(filename, O_RDONLY);
-		if (fd <= 0)
-			ft_putstr("Failed To Open File\n");
+	if (fd <= 0)
+		ft_putstr("Failed To Open File\n");
 	while (1)
 	{
 		line = get_next_line(fd);

@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 22:27:28 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 04:55:11 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 05:51:44 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,17 @@ void	change_map(t_map *map, t_param *next)
 		print_img(map);
 		map->cnt++;
 		ft_putstr("move : ");
-		ft_putnbr(map->cnt);
+		ft_putstr(ft_itoa(map->cnt));
 		write(1, "\n", 1);
+		mlx_string_put(map->mlx, map->win, 15, 25, 100, ft_itoa(map->cnt));
 	}
 	if (map->str[next->y][next->x] == 'E' && map->c == 0)
 	{
 		map->cnt++;
 		ft_putstr("move : ");
-		ft_putnbr(map->cnt);
-		write(1, "\n", 1);
+		ft_putstr(ft_itoa(map->cnt));
+		ft_putstr("\nfinish!\n");
+		mlx_string_put(map->mlx, map->win, 15, 25, 100, ft_itoa(map->cnt));
 		exit(0);
 	}
 }

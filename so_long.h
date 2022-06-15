@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 05:05:52 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 05:46:29 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,7 @@ void	print_img(t_map *map);
 
 /* so_long_utils.c */
 char	*ft_strchr(const char *s, int c);
-void	ft_putchar(char c);
-void	ft_putnbr(int nb);
 void	ft_putstr(char *str);
+char	*ft_itoa(int n);
 
 #endif
