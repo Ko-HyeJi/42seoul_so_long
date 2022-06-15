@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 22:27:28 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/15 23:21:04 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 03:59:00 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@ int	key_press(int keycode, t_map *map)
 	}
 	else if (keycode == KEY_ESC)
 		exit(0);
-	change_img(map, &next);
+	else
+		return (0);
+	change_map(map, &next);
 	return (0);
 }
 
-void	change_img(t_map *map, t_param *next)
+void	change_map(t_map *map, t_param *next)
 {
 	if (map->str[next->y][next->x] != '1' && map->str[next->y][next->x] != 'E')
 	{
@@ -50,14 +52,23 @@ void	change_img(t_map *map, t_param *next)
 		map->y = next->y;
 		print_img(map);
 		map->cnt++;
+		ft_putstr("move : ");
 		ft_putnbr(map->cnt);
 		write(1, "\n", 1);
 	}
 	if (map->str[next->y][next->x] == 'E' && map->c == 0)
 	{
 		map->cnt++;
+		ft_putstr("move : ");
 		ft_putnbr(map->cnt);
 		write(1, "\n", 1);
 		exit(0);
 	}
 }
+
+/*int	click_exit_button(int keycode)
+{
+	if (keycode == ON_DESTROY)
+		exit(0);
+	return (0);
+}*/

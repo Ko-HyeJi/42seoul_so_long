@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:03:14 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 02:16:22 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 03:56:26 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,21 @@
 void	print_error_msg(t_map *map)
 {
 	if (map->error == -1)
-		ft_putstr("WRONG MAP\n");
-	if (map->c < 1 || map->p != 1 || map->e != 1)
-		map->error = -1;
+		ft_putstr("ERROR\nmap must be rectangular\n");
+	if (map->error == -2)
+		ft_putstr("ERROR\nmap must be closed by by walls\n");
 	if (map->c == 0)
-		ft_putstr("NEED MORE COLLECTION\n");
+		ft_putstr("ERROR\nneed more collection\n");
 	if (map->p == 0)
-		ft_putstr("NEED A PLAYER\n");
+		ft_putstr("ERROR\nneed a player\n");
 	if (map->e == 0)
-		ft_putstr("NEED AN EXIT\n");
+		ft_putstr("ERROR\nneed an exit\n");
 	if (map->p > 1)
-		ft_putstr("TOO MANY PLAYERS\n");
+		ft_putstr("ERROR\ntoo many players\n");
 	if (map->e > 1)
-		ft_putstr("TOO MANY EXIT\n");
+		ft_putstr("ERROR\ntoo many exits\n");
+	if (map->c < 1 || map->p != 1 || map->e != 1)
+		map->error = -3;
 }
 
 void	map_check_size(t_map *map)
@@ -59,12 +61,12 @@ void	map_check_wall(t_map *map)
 			if (h == 0 || h == map->hei - 1)
 			{
 				if (map->str[h][w] != '1')
-					map->error = -1;
+					map->error = -2;
 			}
 			else if (w == 0 || w == map->wid - 1)
 			{
 				if (map->str[h][w] != '1')
-					map->error = -1;
+					map->error = -2;
 			}
 			w++;
 		}
@@ -83,7 +85,7 @@ void	map_check_element(t_map *map)
 		w = 0;
 		while (w < map->wid)
 		{
-			if (ft_strchr("10PEC", map->str[h][w]) == NULL)
+			if (ft_strchr("01PEC", map->str[h][w]) == NULL)
 				map->error = -1;
 			else if (map->str[h][w] == 'P')
 			{
@@ -109,6 +111,8 @@ void	read_map(char *filename, t_map *map)
 
 	str = "";
 	fd = open(filename, O_RDONLY);
+		if (fd <= 0)
+			ft_putstr("Failed To Open File\n");
 	while (1)
 	{
 		line = get_next_line(fd);

@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 02:36:52 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 04:18:02 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,6 @@ void	ft_putstr(char *str);
 
 /* key.c */
 int		key_press(int keycode, t_map *map);
-void	change_img(t_map *map, t_param *next);
+void	change_map(t_map *map, t_param *next);
 
 #endif
