@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 04:59:36 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 05:05:52 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,11 @@ void	map_check_wall(t_map *map);
 void	map_check_element(t_map *map);
 void	read_map(char *filename, t_map *map);
 
+/* key.c */
+int		key_press(int keycode, t_map *map);
+void	change_map(t_map *map, t_param *next);
+int		click_red_cross(t_map *map);
+
 /* so_long.c */
 void	img_init(t_img *img, void *mlx);
 void	map_init(t_map *map, t_img *img);
@@ -99,10 +104,5 @@ char	*ft_strchr(const char *s, int c);
 void	ft_putchar(char c);
 void	ft_putnbr(int nb);
 void	ft_putstr(char *str);
-
-/* key.c */
-int		key_press(int keycode, t_map *map);
-void	change_map(t_map *map, t_param *next);
-int		click_red_cross(t_map *map);
 
 #endif
