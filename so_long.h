@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 02:15:44 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 02:36:52 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_img
 	void	*player_R;
 	void	*player_L;
 	void	*exit;
-	void	*collectible;
+	void	*collection;
 	int		direction;
 	
 }	t_img;
