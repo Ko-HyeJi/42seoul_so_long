@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/14 23:58:09 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/15 23:21:45 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ void	img_init(t_img *img, void *mlx)
 	img_h = 50;
 	img->empty = mlx_xpm_file_to_image(mlx, "./images/road.xpm", &img_w, &img_h);
 	img->wall = mlx_xpm_file_to_image(mlx, "./images/block.xpm", &img_w, &img_h);
-	img->player = mlx_xpm_file_to_image(mlx, "./images/rider_R.xpm", &img_w, &img_h);
+	img->player_R = mlx_xpm_file_to_image(mlx, "./images/rider_R.xpm", &img_w, &img_h);
+	img->player_L = mlx_xpm_file_to_image(mlx, "./images/rider_L.xpm", &img_w, &img_h);
 	img->exit = mlx_xpm_file_to_image(mlx, "./images/house.xpm", &img_w, &img_h);
 	img->collectible = mlx_xpm_file_to_image(mlx, "./images/chicken.xpm", &img_w, &img_h);
+	img->direction = 0;
 }
 
 void	print_img(t_map *map)
@@ -55,7 +57,12 @@ void	print_img(t_map *map)
 			if (map->str[h][w] == '1')
 				mlx_put_image_to_window(map->mlx, map->win, map->img->wall, w * 50, h * 50);
 			else if (map->str[h][w] == 'P')
-				mlx_put_image_to_window(map->mlx, map->win, map->img->player, w * 50, h * 50);
+			{
+				if (map->img->direction == 0)
+					mlx_put_image_to_window(map->mlx, map->win, map->img->player_R, w * 50, h * 50);
+				else
+					mlx_put_image_to_window(map->mlx, map->win, map->img->player_L, w * 50, h * 50);
+			}
 			else if (map->str[h][w] == 'E')
 				mlx_put_image_to_window(map->mlx, map->win, map->img->exit, w * 50, h * 50);
 			else if (map->str[h][w] == 'C')

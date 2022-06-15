@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/15 00:43:35 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/15 23:19:00 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,12 @@ typedef struct s_img
 {
 	void	*empty;
 	void	*wall;
-	void	*player;
+	void	*player_R;
+	void	*player_L;
 	void	*exit;
 	void	*collectible;
+	int		direction;
+	
 }	t_img;
 
 typedef struct s_map
