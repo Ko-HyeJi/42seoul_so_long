@@ -6,7 +6,7 @@
 #    By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/09 21:42:29 by hyko              #+#    #+#              #
-#    Updated: 2022/06/16 17:42:23 by hyko             ###   ########.fr        #
+#    Updated: 2022/06/16 18:15:05 by hyko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,9 +54,11 @@ bonus :
 	$(MAKE) MAKE_BONUS=1 all
 	
 $(NAME) : $(OBJS)
+	make -C ./mlx/
 	$(CC) $(CFLAG) $(MLX) -o $@ $^
 	
 clean :
+	make -C ./mlx/ clean
 	$(RM) $(OBJ) $(OBJ_BN)
 
 fclean : clean
