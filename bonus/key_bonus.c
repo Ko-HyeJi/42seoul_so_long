@@ -6,11 +6,11 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 22:27:28 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 06:36:04 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 10:12:40 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 int	key_press(int keycode, t_map *map)
 {	
@@ -44,6 +44,11 @@ void	change_map(t_map *map, t_param *next)
 {
 	if (map->str[next->y][next->x] != '1' && map->str[next->y][next->x] != 'E')
 	{
+		if (map->str[next->y][next->x] == 'T')
+		{
+			ft_putstr("You Lose...\n");
+			exit(0);
+		}
 		if (map->str[next->y][next->x] == 'C')
 			map->c--;
 		map->str[next->y][next->x] = 'P';
@@ -62,7 +67,7 @@ void	change_map(t_map *map, t_param *next)
 		map->cnt++;
 		ft_putstr("move : ");
 		ft_putstr(ft_itoa(map->cnt));
-		ft_putstr("\nfinish!\n");
+		ft_putstr("\nYou Win!\n");
 		mlx_string_put(map->mlx, map->win, 15, 25, 100, ft_itoa(map->cnt));
 		exit(0);
 	}

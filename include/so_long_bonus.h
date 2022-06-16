@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 10:00:13 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 11:01:15 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "../mlx/mlx.h"
 # include <stdlib.h>
@@ -37,6 +37,7 @@ typedef struct s_img
 	void	*player_l;
 	void	*exit;
 	void	*collection;
+	void	*enemy;
 	int		direction;
 }	t_img;
 
@@ -47,6 +48,7 @@ typedef struct s_map
 	int		p;
 	int		c;
 	int		e;
+	int		t;
 	char	**str;
 	int		error;
 	int		x;
@@ -103,5 +105,8 @@ void	print_img(t_map *map);
 char	*ft_strchr(const char *s, int c);
 void	ft_putstr(char *str);
 char	*ft_itoa(int n);
+
+/* enemy_bonus.c */
+int	moving_enemy(t_map *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 22:27:28 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 06:36:20 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 10:13:21 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	change_map(t_map *map, t_param *next)
 		map->cnt++;
 		ft_putstr("move : ");
 		ft_putstr(ft_itoa(map->cnt));
-		ft_putstr("\nfinish!\n");
+		ft_putstr("You Win!\n");
 		exit(0);
 	}
 }
