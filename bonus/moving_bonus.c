@@ -6,11 +6,33 @@
 /*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:13:52 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 16:23:17 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 21:31:06 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long_bonus.h"
+
+void	find_enemy(t_map *map)
+{
+	int		h;
+	int		w;
+
+	h = 0;
+	while (h < map->hei)
+	{
+		w = 0;
+		while (w < map->wid)
+		{
+			if (map->str[h][w] == 'T')
+			{
+				map->enemy_x = w;
+				map->enemy_y = h;
+			}
+			w++;
+		}
+		h++;
+	}
+}
 
 void	moving_enemy(t_map *map)
 {

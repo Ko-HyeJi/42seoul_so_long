@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 17:02:16 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 21:31:00 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,28 +95,6 @@ void	print_img(t_map *map)
 		while (w < map->wid)
 		{
 			print_img_2(map, w, h);
-			w++;
-		}
-		h++;
-	}
-}
-
-void	find_enemy(t_map *map)
-{
-	int		h;
-	int		w;
-
-	h = 0;
-	while (h < map->hei)
-	{
-		w = 0;
-		while (w < map->wid)
-		{
-			if (map->str[h][w] == 'T')
-			{
-				map->enemy_x = w;
-				map->enemy_y = h;
-			}
 			w++;
 		}
 		h++;
