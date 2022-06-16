@@ -6,7 +6,7 @@
 #    By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/09 21:42:29 by hyko              #+#    #+#              #
-#    Updated: 2022/06/16 15:14:03 by hyko             ###   ########.fr        #
+#    Updated: 2022/06/16 17:03:21 by hyko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC = ./src/so_long.c\
  ./src/so_long_utils.c\
  ./src/map.c\
  ./src/key.c\
+ ./src/error.c\
  ./src/ft_split.c\
  ./src/get_next_line.c\
  ./src/get_next_line_utils.c 

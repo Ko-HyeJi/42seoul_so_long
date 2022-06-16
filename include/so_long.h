@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 10:00:13 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 16:55:57 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,11 @@ int		word_len(char const *s, char c);
 char	**ft_split(char const *s, char c);
 
 /* map.c */
-void	print_error_msg(t_map *map);
 void	map_check_size(t_map *map);
 void	map_check_wall(t_map *map);
 void	map_check_element(t_map *map);
 void	read_map(char *filename, t_map *map);
+void	map_check(t_map	*map);
 
 /* key.c */
 int		key_press(int keycode, t_map *map);
@@ -103,5 +103,9 @@ void	print_img(t_map *map);
 char	*ft_strchr(const char *s, int c);
 void	ft_putstr(char *str);
 char	*ft_itoa(int n);
+
+/* error.c */
+void	print_error_msg(t_map *map);
+void	print_error_msg_2(char *str);
 
 #endif

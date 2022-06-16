@@ -6,27 +6,11 @@
 /*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:03:14 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 15:49:26 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 16:58:43 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-void	print_error_msg(t_map *map)
-{
-	if (map->c < 1 || map->p != 1 || map->e != 1)
-		map->error = -3;
-	if (map->c == 0)
-		ft_putstr("ERROR\nneed more collection\n");
-	if (map->p == 0)
-		ft_putstr("ERROR\nneed a player\n");
-	if (map->e == 0)
-		ft_putstr("ERROR\nneed an exit\n");
-	if (map->p > 1)
-		ft_putstr("ERROR\ntoo many players\n");
-	if (map->e > 1)
-		ft_putstr("ERROR\ntoo many exits\n");
-}
 
 void	map_check_size(t_map *map)
 {
@@ -37,12 +21,10 @@ void	map_check_size(t_map *map)
 	while (map->str[i] != NULL)
 	{
 		if ((int)ft_strlen(map->str[i]) != map->wid)
-			map->error = -1;
+			print_error_msg_2("ERROR\nmap must be rectangular\n");
 		i++;
 	}
 	map->hei = i;
-	if (map->error == -1)
-		ft_putstr("ERROR\nmap must be rectangular\n");
 }
 
 void	map_check_wall(t_map *map)
@@ -86,7 +68,7 @@ void	map_check_element(t_map *map)
 		while (w < map->wid)
 		{
 			if (ft_strchr("01PEC", map->str[h][w]) == NULL)
-				map->error = -4;
+				print_error_msg_2("ERROR\nmap contain invalid character\n");
 			else if (map->str[h][w] == 'P')
 			{
 				map->p++;
@@ -101,8 +83,6 @@ void	map_check_element(t_map *map)
 		}
 		h++;
 	}
-	if (map->error == -4)
-		ft_putstr("ERROR\nmap contain invalid character\n");
 }
 
 void	read_map(char *filename, t_map *map)
@@ -115,7 +95,7 @@ void	read_map(char *filename, t_map *map)
 	str = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd <= 0)
-		ft_putstr("Failed To Open File\n");
+		print_error_msg_2("ERROR\nFailed To Open File\n");
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -129,8 +109,15 @@ void	read_map(char *filename, t_map *map)
 	}
 	map->str = ft_split(str, '\n');
 	free(str);
+	map_check(map);
+}
+
+void	map_check(t_map *map)
+{
 	map_check_size(map);
 	map_check_wall(map);
 	map_check_element(map);
 	print_error_msg(map);
+	if (map->error == -1)
+		exit(0);
 }

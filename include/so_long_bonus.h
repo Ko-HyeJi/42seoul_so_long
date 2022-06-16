@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 16:19:42 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 16:45:04 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,6 @@ void	ft_putstr(char *str);
 char	*ft_itoa(int n);
 
 /* enemy_bonus.c */
-int	moving_img(t_map *map);
+int		moving_img(t_map *map);
 
 #endif
