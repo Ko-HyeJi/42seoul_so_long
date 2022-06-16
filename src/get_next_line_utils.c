@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 21:00:08 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 06:34:05 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 15:50:14 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (s1 == NULL && s2 == NULL)
 		return (NULL);
 	if (s1 == NULL)
-		return ((char *)s2);
+		return (ft_strdup((char *)s2));
 	if (s2 == NULL)
-		return ((char *)s1);
+		return (ft_strdup((char *)s1));
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
 	i = -1;

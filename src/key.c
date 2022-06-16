@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 22:27:28 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 15:05:02 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 15:53:09 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	key_press(int keycode, t_map *map)
 
 void	change_map(t_map *map, t_param *next)
 {
+	char	*step;
+
 	if (map->str[next->y][next->x] != '1' && map->str[next->y][next->x] != 'E')
 	{
 		if (map->str[next->y][next->x] == 'C')
@@ -52,16 +54,20 @@ void	change_map(t_map *map, t_param *next)
 		map->y = next->y;
 		print_img(map);
 		map->cnt++;
+		step = ft_itoa(map->cnt);
 		ft_putstr("move : ");
-		ft_putstr(ft_itoa(map->cnt));
+		ft_putstr(step);
 		write(1, "\n", 1);
+		free(step);
 	}
 	if (map->str[next->y][next->x] == 'E' && map->c == 0)
 	{
 		map->cnt++;
+		step = ft_itoa(map->cnt);
 		ft_putstr("move : ");
-		ft_putstr(ft_itoa(map->cnt));
+		ft_putstr(step);
 		ft_putstr("\nYou Win!\n");
+		free(step);
 		exit(0);
 	}
 }
