@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 22:27:28 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 15:07:13 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 15:36:00 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,20 @@ void	change_map(t_map *map, t_param *next)
 		map->str[map->y][map->x] = '0';
 		map->x = next->x;
 		map->y = next->y;
-		print_img(map);
+		//print_img(map);
 		map->cnt++;
-		ft_putstr("move : ");
-		ft_putstr(ft_itoa(map->cnt));
-		write(1, "\n", 1);
-		mlx_string_put(map->mlx, map->win, 15, 25, 100, ft_itoa(map->cnt));
+		//ft_putstr("move : ");
+		//ft_putstr(ft_itoa(map->cnt));
+		//write(1, "\n", 1);
+		//mlx_string_put(map->mlx, map->win, 15, 25, 100, ft_itoa(map->cnt));
 	}
 	if (map->str[next->y][next->x] == 'E' && map->c == 0)
 	{
 		map->cnt++;
-		ft_putstr("move : ");
-		ft_putstr(ft_itoa(map->cnt));
-		ft_putstr("\nYou Win!\n");
-		mlx_string_put(map->mlx, map->win, 15, 25, 100, ft_itoa(map->cnt));
+		//ft_putstr("move : ");
+		//ft_putstr(ft_itoa(map->cnt));
+		//ft_putstr("\nYou Win!\n");
+		//mlx_string_put(map->mlx, map->win, 15, 25, 100, ft_itoa(map->cnt));
 		exit(0);
 	}
 }

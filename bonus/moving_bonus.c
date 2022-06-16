@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemy_bonus.c                                      :+:      :+:    :+:   */
+/*   moving_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:13:52 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 11:20:33 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 15:38:35 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long_bonus.h"
 
-int	moving_enemy(t_map *map)
+/*int	moving_enemy(t_map *map)
 {
 	int			h;
 	int			w;
@@ -50,4 +50,29 @@ int	moving_enemy(t_map *map)
 	}
 	print_img(map);
 	return(0);
+}*/
+
+int	moving_img(t_map *map)
+{
+	char	*step;
+
+	if ((map->direction_cnt % 10) == 0)
+	{
+		map->direction_cnt = 0;
+		if (map->img->c_direction == 0)
+		{
+			map->img->c_direction = 1;
+		}
+		else if (map->img->c_direction == 1)
+		{
+			// print_img(map);
+			map->img->c_direction = 0;
+		}
+	}
+	map->direction_cnt++;
+	print_img(map);
+	step = ft_itoa(map->cnt);
+	mlx_string_put(map->mlx, map->win, 15, 25, 100, step);
+	free(step);
+	return (0);
 }

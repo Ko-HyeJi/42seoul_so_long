@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 15:01:51 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 15:28:26 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_map
 	int		x;
 	int		y;
 	int		cnt;
+	int		direction_cnt;
 	void	*mlx;
 	void	*win;
 	t_img	*img;
@@ -109,6 +110,6 @@ void	ft_putstr(char *str);
 char	*ft_itoa(int n);
 
 /* enemy_bonus.c */
-int	moving_enemy(t_map *map);
+int	moving_img(t_map *map);
 
 #endif

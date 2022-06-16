@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 15:06:53 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 15:28:54 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	map_init(t_map *map, t_img *img)
 	map->y = 0;
 	map->cnt = 0;
 	map->img = img;
+	map->direction_cnt = 0;
 }
 
 void	img_init(t_img *img, void *mlx)
@@ -70,9 +71,12 @@ void	print_img_2(t_map *map, int w, int h)
 	else if (map->str[h][w] == 'E')
 		mlx_put_image_to_window(
 			map->mlx, map->win, map->img->exit, w * 50, h * 50);
-	else if (map->str[h][w] == 'C')
+	else if (map->str[h][w] == 'C' && map->img->c_direction == 0)
 		mlx_put_image_to_window(
 			map->mlx, map->win, map->img->collection_r, w * 50, h * 50);
+	else if (map->str[h][w] == 'C' && map->img->c_direction == 1)
+		mlx_put_image_to_window(
+			map->mlx, map->win, map->img->collection_l, w * 50, h * 50);
 	else if (map->str[h][w] == 'T')
 		mlx_put_image_to_window(
 			map->mlx, map->win, map->img->enemy, w * 50, h * 50);	
@@ -111,10 +115,10 @@ int	main(int argc, char **argv)
 		return (0);
 	map.win
 		= mlx_new_window(map.mlx, (map.wid * 50), (map.hei * 50), "so_long");
+	print_img(&map);
 	mlx_key_hook(map.win, &key_press, &map);
 	mlx_hook(map.win, RED_CROSS, 0, &click_red_cross, &map);
-	print_img(&map);
-	//mlx_loop_hook(map.mlx, &moving_enemy, &map);
+	mlx_loop_hook(map.mlx, &moving_img, &map);
 	mlx_loop(map.mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:03:14 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 12:17:08 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 15:47:12 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,9 @@ void	read_map(char *filename, t_map *map)
 	int		fd;
 	char	*line;
 	char	*str;
+	char	*tmp;
 
-	str = "";
+	str = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd <= 0)
 		ft_putstr("Failed To Open File\n");
@@ -126,9 +127,14 @@ void	read_map(char *filename, t_map *map)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
+		tmp = str;
 		str = ft_strjoin(str, line);
+		if (tmp != NULL)
+			free(tmp);
+		free(line);
 	}
 	map->str = ft_split(str, '\n');
+	free(str);
 	map_check_size(map);
 	map_check_wall(map);
 	map_check_element(map);

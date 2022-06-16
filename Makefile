@@ -6,7 +6,7 @@
 #    By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/09 21:42:29 by hyko              #+#    #+#              #
-#    Updated: 2022/06/16 11:24:51 by hyko             ###   ########.fr        #
+#    Updated: 2022/06/16 15:14:03 by hyko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ SRC_BN = ./bonus/so_long_bonus.c\
  ./bonus/ft_split_bonus.c\
  ./bonus/get_next_line_bonus.c\
  ./bonus/get_next_line_utils_bonus.c\
- ./bonus/enemy_bonus.c
+ ./bonus/moving_bonus.c
 
 all :
 	$(CC) $(CFLAG) $(MLX) $(INCLUDE) $(SRC)
