@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/09 21:42:29 by hyko              #+#    #+#              #
-#    Updated: 2022/06/16 10:21:31 by hyko             ###   ########.fr        #
+#    Updated: 2022/06/16 11:24:51 by hyko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,10 +39,10 @@ SRC_BN = ./bonus/so_long_bonus.c\
  ./bonus/enemy_bonus.c
 
 all :
-	arch -x86_64 $(CC) $(CFLAG) $(MLX) $(INCLUDE) $(SRC)
+	$(CC) $(CFLAG) $(MLX) $(INCLUDE) $(SRC)
 
 bonus : 
-	arch -x86_64 $(CC) $(CFLAG) $(MLX) $(INCLUDE_BN) $(SRC_BN) 
+	$(CC) $(CFLAG) $(MLX) $(INCLUDE_BN) $(SRC_BN) 
 
 clean :
 	rm -rf a.out so_long.h.gch

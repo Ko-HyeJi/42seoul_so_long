@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:03:14 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 10:08:26 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 12:17:08 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	print_error_msg(t_map *map)
 {
-	if (map->error == -1)
-		ft_putstr("ERROR\nmap must be rectangular\n");
-	if (map->error == -2)
-		ft_putstr("ERROR\nmap must be closed by by walls\n");
+	if (map->c < 1 || map->p != 1 || map->e != 1 || map->t < 1)
+		map->error = -3;
 	if (map->c == 0)
 		ft_putstr("ERROR\nneed more collection\n");
 	if (map->p == 0)
@@ -30,8 +28,6 @@ void	print_error_msg(t_map *map)
 		ft_putstr("ERROR\ntoo many exits\n");
 	if (map->t == 0)
 		ft_putstr("ERROR\nneed more thief\n");
-	if (map->c < 1 || map->p != 1 || map->e != 1 || map->t < 1)
-		map->error = -3;
 }
 
 void	map_check_size(t_map *map)
@@ -47,6 +43,8 @@ void	map_check_size(t_map *map)
 		i++;
 	}
 	map->hei = i;
+	if (map->error == -1)
+		ft_putstr("ERROR\nmap must be rectangular\n");
 }
 
 void	map_check_wall(t_map *map)
@@ -63,7 +61,9 @@ void	map_check_wall(t_map *map)
 			if (h == 0 || h == map->hei - 1)
 			{
 				if (map->str[h][w] != '1')
+				{
 					map->error = -2;
+				}
 			}
 			else if (w == 0 || w == map->wid - 1)
 			{
@@ -74,6 +74,8 @@ void	map_check_wall(t_map *map)
 		}
 		h++;
 	}
+	if (map->error == -2)
+		ft_putstr("ERROR\nmap must be closed by by walls\n");
 }
 
 void	map_check_element(t_map *map)
@@ -88,7 +90,7 @@ void	map_check_element(t_map *map)
 		while (w < map->wid)
 		{
 			if (ft_strchr("01PECT", map->str[h][w]) == NULL)
-				map->error = -1;
+				map->error = -4;
 			else if (map->str[h][w] == 'P')
 			{
 				map->p++;
@@ -105,6 +107,8 @@ void	map_check_element(t_map *map)
 		}
 		h++;
 	}
+	if (map->error == -4)
+		ft_putstr("ERROR\nmap contain invalid character\n");
 }
 
 void	read_map(char *filename, t_map *map)

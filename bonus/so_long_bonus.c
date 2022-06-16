@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 11:14:27 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 11:25:40 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	main(int argc, char **argv)
 	mlx_key_hook(map.win, &key_press, &map);
 	mlx_hook(map.win, RED_CROSS, 0, &click_red_cross, &map);
 	print_img(&map);
-	mlx_loop_hook(map.mlx, &moving_enemy, &map);
+	//mlx_loop_hook(map.mlx, &moving_enemy, &map);
 	mlx_loop(map.mlx);
 	return (0);
 }
