@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 15:28:26 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 16:19:42 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_img
 	void	*enemy;
 	int		p_direction;
 	int		c_direction;
+	int		e_direction;
 }	t_img;
 
 typedef struct s_map
@@ -60,6 +61,8 @@ typedef struct s_map
 	void	*mlx;
 	void	*win;
 	t_img	*img;
+	int		enemy_x;
+	int		enemy_y;
 }	t_map;
 
 typedef struct s_param

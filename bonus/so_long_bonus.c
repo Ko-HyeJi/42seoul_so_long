@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 15:28:54 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 16:19:56 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	img_init(t_img *img, void *mlx)
 		= mlx_xpm_file_to_image(mlx, "./images/thief.xpm", &img_w, &img_h);
 	img->p_direction = 0;
 	img->c_direction = 0;
+	img->e_direction = 0;
 }
 
 void	print_img_2(t_map *map, int w, int h)
@@ -100,6 +101,28 @@ void	print_img(t_map *map)
 	}
 }
 
+void	find_enemy(t_map *map)
+{
+	int		h;
+	int		w;
+
+	h = 0;
+	while (h < map->hei)
+	{
+		w = 0;
+		while (w < map->wid)
+		{
+			if (map->str[h][w] == 'T')
+			{
+				map->enemy_x = w;
+				map->enemy_y = h;
+			}
+			w++;
+		}
+		h++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_img	img;
@@ -113,6 +136,7 @@ int	main(int argc, char **argv)
 	read_map(argv[1], &map);
 	if (map.error < 0)
 		return (0);
+	find_enemy(&map);
 	map.win
 		= mlx_new_window(map.mlx, (map.wid * 50), (map.hei * 50), "so_long");
 	print_img(&map);
