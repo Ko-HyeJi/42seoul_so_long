@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 17:01:15 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 17:11:08 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,11 @@ void	print_img(t_map *map)
 	}
 }
 
-
-
 int	main(int argc, char **argv)
 {
 	t_img	img;
 	t_map	map;
 
-	atexit(check_leaks);
 	if (argc != 2)
 		return (0);
 	map.mlx = mlx_init();
