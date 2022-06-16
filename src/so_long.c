@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 06:34:29 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 15:04:17 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	img_init(t_img *img, void *mlx)
 	img->exit
 		= mlx_xpm_file_to_image(mlx, "./images/house.xpm", &img_w, &img_h);
 	img->collection
-		= mlx_xpm_file_to_image(mlx, "./images/chicken.xpm", &img_w, &img_h);
+		= mlx_xpm_file_to_image(mlx, "./images/chicken_R.xpm", &img_w, &img_h);
 	img->direction = 0;
 }
 

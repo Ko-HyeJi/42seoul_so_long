@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 11:01:15 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 15:01:51 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@ typedef struct s_img
 	void	*player_r;
 	void	*player_l;
 	void	*exit;
-	void	*collection;
+	void	*collection_r;
+	void	*collection_l;
 	void	*enemy;
-	int		direction;
+	int		p_direction;
+	int		c_direction;
 }	t_img;
 
 typedef struct s_map

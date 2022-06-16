@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 11:25:40 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 15:02:32 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	img_init(t_img *img, void *mlx)
 		= mlx_xpm_file_to_image(mlx, "./images/chicken.xpm", &img_w, &img_h);
 	img->enemy
 		= mlx_xpm_file_to_image(mlx, "./images/thief.xpm", &img_w, &img_h);
-	img->direction = 0;
+	img->p_direction = 0;
+	img->c_direction = 0;
 }
 
 void	print_img_2(t_map *map, int w, int h)
