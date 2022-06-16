@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 15:02:32 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 15:06:53 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,10 @@ void	img_init(t_img *img, void *mlx)
 		= mlx_xpm_file_to_image(mlx, "./images/rider_L.xpm", &img_w, &img_h);
 	img->exit
 		= mlx_xpm_file_to_image(mlx, "./images/house.xpm", &img_w, &img_h);
-	img->collection
-		= mlx_xpm_file_to_image(mlx, "./images/chicken.xpm", &img_w, &img_h);
+	img->collection_r
+		= mlx_xpm_file_to_image(mlx, "./images/chicken_R.xpm", &img_w, &img_h);
+	img->collection_l
+		= mlx_xpm_file_to_image(mlx, "./images/chicken_L.xpm", &img_w, &img_h);
 	img->enemy
 		= mlx_xpm_file_to_image(mlx, "./images/thief.xpm", &img_w, &img_h);
 	img->p_direction = 0;
@@ -59,10 +61,10 @@ void	print_img_2(t_map *map, int w, int h)
 	if (map->str[h][w] == '1')
 		mlx_put_image_to_window(
 			map->mlx, map->win, map->img->wall, w * 50, h * 50);
-	else if (map->str[h][w] == 'P' && map->img->direction == 0)
+	else if (map->str[h][w] == 'P' && map->img->p_direction == 0)
 		mlx_put_image_to_window(
 			map->mlx, map->win, map->img->player_r, w * 50, h * 50);
-	else if (map->str[h][w] == 'P' && map->img->direction == 1)
+	else if (map->str[h][w] == 'P' && map->img->p_direction == 1)
 		mlx_put_image_to_window(
 			map->mlx, map->win, map->img->player_l, w * 50, h * 50);
 	else if (map->str[h][w] == 'E')
@@ -70,7 +72,7 @@ void	print_img_2(t_map *map, int w, int h)
 			map->mlx, map->win, map->img->exit, w * 50, h * 50);
 	else if (map->str[h][w] == 'C')
 		mlx_put_image_to_window(
-			map->mlx, map->win, map->img->collection, w * 50, h * 50);
+			map->mlx, map->win, map->img->collection_r, w * 50, h * 50);
 	else if (map->str[h][w] == 'T')
 		mlx_put_image_to_window(
 			map->mlx, map->win, map->img->enemy, w * 50, h * 50);	

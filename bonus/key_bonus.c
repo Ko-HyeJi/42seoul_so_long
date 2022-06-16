@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 22:27:28 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 10:12:40 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/16 15:07:13 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	key_press(int keycode, t_map *map)
 	else if (keycode == KEY_A)
 	{
 		next.x--;
-		map->img->direction = 1;
+		map->img->p_direction = 1;
 	}
 	else if (keycode == KEY_D)
 	{
 		next.x++;
-		map->img->direction = 0;
+		map->img->p_direction = 0;
 	}
 	else if (keycode == KEY_ESC)
 		exit(0);
