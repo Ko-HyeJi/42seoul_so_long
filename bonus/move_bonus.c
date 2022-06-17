@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:13:52 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 15:52:50 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 16:13:50 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 int	moving_img(t_map *map)
 {
+	t_location	enemy;
+
 	if (map->time == 10)
 	{
 		map->time = 0;
 		moving_collection(map);
-		moving_enemy(map);
+		find_enemy(map, &enemy);
+		moving_enemy(map, &enemy);
 	}
 	map->time++;
 	print_map(map);
@@ -32,37 +35,6 @@ void	moving_collection(t_map *map)
 		map->img->c_direction = 1;
 	else if (map->img->c_direction == 1)
 		map->img->c_direction = 0;
-}
-
-void	moving_enemy(t_map *map)
-{
-	t_location	enemy;
-
-	find_enemy(map, &enemy);
-	if (map->img->e_direction == 0)
-	{
-		if (map->str[enemy.y + 1][enemy.x] == 'P')
-			print_error_msg("You Lose...\n");
-		if (map->str[enemy.y + 1][enemy.x] == '0')
-		{
-			map->str[enemy.y + 1][enemy.x] = 'T';
-			map->str[enemy.y][enemy.x] = '0';
-		}
-		else
-			map->img->e_direction = 1;
-	}
-	else if (map->img->e_direction == 1)
-	{
-		if (map->str[enemy.y - 1][enemy.x] == 'P')
-			print_error_msg("You Lose...\n");
-		if (map->str[enemy.y - 1][enemy.x] == '0')
-		{
-			map->str[enemy.y - 1][enemy.x] = 'T';
-			map->str[enemy.y][enemy.x] = '0';
-		}
-		else
-			map->img->e_direction = 0;
-	}
 }
 
 void	find_enemy(t_map *map, t_location *enemy)
@@ -84,5 +56,33 @@ void	find_enemy(t_map *map, t_location *enemy)
 			w++;
 		}
 		h++;
+	}
+}
+
+void	moving_enemy(t_map *map, t_location *enemy)
+{
+	if (map->img->e_direction == 0)
+	{
+		if (map->str[enemy->y + 1][enemy->x] == 'P')
+			print_error_msg("You Lose...\n");
+		if (map->str[enemy->y + 1][enemy->x] == '0')
+		{
+			map->str[enemy->y + 1][enemy->x] = 'T';
+			map->str[enemy->y][enemy->x] = '0';
+		}
+		else
+			map->img->e_direction = 1;
+	}
+	else if (map->img->e_direction == 1)
+	{
+		if (map->str[enemy->y - 1][enemy->x] == 'P')
+			print_error_msg("You Lose...\n");
+		if (map->str[enemy->y - 1][enemy->x] == '0')
+		{
+			map->str[enemy->y - 1][enemy->x] = 'T';
+			map->str[enemy->y][enemy->x] = '0';
+		}
+		else
+			map->img->e_direction = 0;
 	}
 }

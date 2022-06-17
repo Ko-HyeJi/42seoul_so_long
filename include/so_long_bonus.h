@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 15:48:38 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 16:12:14 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,9 @@ void	map_check_element(t_map *map);
 
 /* move.c */
 int		moving_img(t_map *map);
-void	find_enemy(t_map *map, t_location *enemy);
 void	moving_collection(t_map *map);
-void	moving_enemy(t_map *map);
+void	find_enemy(t_map *map, t_location *enemy);
+void	moving_enemy(t_map *map, t_location *enemy);
 
 /* print_error.c */
 void	check_element_error(t_map *map);

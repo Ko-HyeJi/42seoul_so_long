@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 22:27:28 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 15:45:42 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 16:09:53 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	change_map(t_map *map, t_location *player, t_location *next)
 		player->y = next->y;
 		print_step(map);
 	}
-	
 	if (map->str[next->y][next->x] == 'E' && map->c == 0)
 	{
 		print_step(map);

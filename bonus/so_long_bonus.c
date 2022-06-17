@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 15:20:12 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 15:56:30 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ int	main(int argc, char **argv)
 	img_init(&img, map.mlx);
 	map_init(&map, &img);
 	read_map(argv[1], &map);
-	//find_enemy(&map);
-	map.win
-		= mlx_new_window(map.mlx, (map.wid * 50), (map.hei * 50), "so_long_bonus");
+	map.win = mlx_new_window(
+			map.mlx, (map.wid * 50), (map.hei * 50), "so_long_bonus");
 	mlx_key_hook(map.win, &key_press, &map);
 	mlx_hook(map.win, RED_CROSS, 0, &click_red_cross, &map);
 	mlx_loop_hook(map.mlx, &moving_img, &map);
