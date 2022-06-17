@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 16:56:14 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 13:25:57 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 16:23:07 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	check_element_error(t_map *map)
 {
-	if (map->c < 1 || map->p != 1 || map->e != 1)
-		map->error = -1;
 	if (map->c == 0)
 		print_error_msg("ERROR\nneed more collection\n");
 	if (map->p == 0)

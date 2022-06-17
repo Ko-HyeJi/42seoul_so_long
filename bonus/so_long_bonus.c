@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 15:56:30 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 16:23:37 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	map_init(t_map *map, t_img *img)
 	map->c = 0;
 	map->e = 0;
 	map->t = 0;
-	map->error = 0;
 	map->cnt = 0;
 	map->time = 0;
 }
