@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moving_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:13:52 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 21:31:06 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 12:23:00 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	moving_img(t_map *map)
 	map->direction_cnt++;
 	print_img(map);
 	step = ft_itoa(map->cnt);
-	mlx_string_put(map->mlx, map->win, 15, 25, 100, step);
+	mlx_string_put(map->mlx, map->win, 15, 25, 1, step);
 	free(step);
 	return (0);
 }

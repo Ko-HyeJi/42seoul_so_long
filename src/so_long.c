@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 17:11:08 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 13:01:15 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	map_init(t_map *map, t_img *img)
 {
+	map->img = img;
 	map->hei = 0;
 	map->wid = 0;
 	map->p = 0;
@@ -23,7 +24,6 @@ void	map_init(t_map *map, t_img *img)
 	map->x = 0;
 	map->y = 0;
 	map->cnt = 0;
-	map->img = img;
 }
 
 void	img_init(t_img *img, void *mlx)
@@ -44,8 +44,8 @@ void	img_init(t_img *img, void *mlx)
 	img->exit
 		= mlx_xpm_file_to_image(mlx, "./images/house.xpm", &img_w, &img_h);
 	img->collection
-		= mlx_xpm_file_to_image(mlx, "./images/chicken_R.xpm", &img_w, &img_h);
-	img->direction = 0;
+		= mlx_xpm_file_to_image(mlx, "./images/chicken.xpm", &img_w, &img_h);
+	img->p_direction = 0;
 }
 
 void	print_img_2(t_map *map, int w, int h)
@@ -55,10 +55,10 @@ void	print_img_2(t_map *map, int w, int h)
 	if (map->str[h][w] == '1')
 		mlx_put_image_to_window(
 			map->mlx, map->win, map->img->wall, w * 50, h * 50);
-	else if (map->str[h][w] == 'P' && map->img->direction == 0)
+	else if (map->str[h][w] == 'P' && map->img->p_direction == 0)
 		mlx_put_image_to_window(
 			map->mlx, map->win, map->img->player_r, w * 50, h * 50);
-	else if (map->str[h][w] == 'P' && map->img->direction == 1)
+	else if (map->str[h][w] == 'P' && map->img->p_direction == 1)
 		mlx_put_image_to_window(
 			map->mlx, map->win, map->img->player_l, w * 50, h * 50);
 	else if (map->str[h][w] == 'E')
@@ -93,7 +93,7 @@ int	main(int argc, char **argv)
 	t_map	map;
 
 	if (argc != 2)
-		return (0);
+		print_error_msg_2("need a map file\n");
 	map.mlx = mlx_init();
 	img_init(&img, map.mlx);
 	map_init(&map, &img);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 16:55:57 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 13:00:58 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,24 @@ typedef struct s_img
 	void	*player_l;
 	void	*exit;
 	void	*collection;
-	int		direction;
+	int		p_direction;
 }	t_img;
 
 typedef struct s_map
 {
+	t_img	*img;
+	void	*mlx;
+	void	*win;
+	char	**str;
 	int		hei;
 	int		wid;
 	int		p;
 	int		c;
 	int		e;
-	char	**str;
 	int		error;
 	int		x;
 	int		y;
 	int		cnt;
-	void	*mlx;
-	void	*win;
-	t_img	*img;
 }	t_map;
 
 typedef struct s_param
