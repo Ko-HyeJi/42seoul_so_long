@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 22:27:28 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 14:05:47 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 14:26:40 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	key_press(int keycode, t_map *map)
 		map->img->p_direction = 0;
 	}
 	else if (keycode == KEY_ESC)
-		exit(0);
+		print_error_msg("user terminated the game\n");
 	else
 		return (0);
 	change_map(map, &player, &next);
@@ -98,6 +98,6 @@ void	print_step(t_map *map)
 int	click_red_cross(t_map *map)
 {
 	mlx_destroy_window(map->mlx, map->win);
-	exit(0);
+	print_error_msg("user terminated the game\n");
 	return (0);
 }
