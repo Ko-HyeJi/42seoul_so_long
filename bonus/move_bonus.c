@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:13:52 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 16:13:50 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 17:17:15 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	moving_collection(t_map *map)
 {
 	if (map->img->c_direction == 0)
 		map->img->c_direction = 1;
-	else if (map->img->c_direction == 1)
+	else
 		map->img->c_direction = 0;
 }
 

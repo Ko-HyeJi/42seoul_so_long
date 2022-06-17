@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 22:27:28 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 16:09:53 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 17:21:21 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	key_press(int keycode, t_map *map)
 {	
-	t_location	next;
 	t_location	player;
+	t_location	next;
 
 	find_player(map, &player);
 	next = player;
@@ -71,10 +71,8 @@ void	change_map(t_map *map, t_location *player, t_location *next)
 			print_error_msg("You Lose...\n");
 		if (map->str[next->y][next->x] == 'C')
 			map->c--;
-		map->str[next->y][next->x] = 'P';
 		map->str[player->y][player->x] = '0';
-		player->x = next->x;
-		player->y = next->y;
+		map->str[next->y][next->x] = 'P';
 		print_step(map);
 	}
 	if (map->str[next->y][next->x] == 'E' && map->c == 0)
@@ -85,9 +83,8 @@ void	change_map(t_map *map, t_location *player, t_location *next)
 	}
 }
 
-int	click_red_cross(t_map *map)
+int	click_red_cross(void)
 {
-	mlx_destroy_window(map->mlx, map->win);
 	print_error_msg("user terminated the game\n");
 	return (0);
 }

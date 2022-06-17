@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 16:40:15 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 17:22:02 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,12 @@
 
 # define BUFFER_SIZE 100
 
-# define KEY_PRESS 2
-# define RED_CROSS 17
-
 # define KEY_W 13
 # define KEY_A 0 
 # define KEY_S 1
 # define KEY_D 2
 # define KEY_ESC 53
+# define RED_CROSS 17
 
 typedef struct s_location
 {
@@ -89,7 +87,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 int		key_press(int keycode, t_map *map);
 void	find_player(t_map *map, t_location *player);
 void	change_map(t_map *map, t_location *player, t_location *next);
-int		click_red_cross(t_map *map);
+int		click_red_cross(void);
 
 /* map.c */
 void	read_map(char *filename, t_map *map);

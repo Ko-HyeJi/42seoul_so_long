@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:03:14 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 15:15:55 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 17:21:48 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ void	read_map(char *filename, t_map *map)
 			break ;
 		tmp = str;
 		str = ft_strjoin(str, line);
-		if (tmp != NULL)
-			free(tmp);
+		free(tmp);
 		free(line);
 	}
 	map->str = ft_split(str, '\n');

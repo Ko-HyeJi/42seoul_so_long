@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 16:56:14 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 16:17:06 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 17:11:42 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ void	check_element_error(t_map *map)
 		print_error_msg("ERROR\nneed more collection\n");
 	if (map->p == 0)
 		print_error_msg("ERROR\nneed a player\n");
-	if (map->e == 0)
-		print_error_msg("ERROR\nneed an exit\n");
 	if (map->p > 1)
 		print_error_msg("ERROR\ntoo many players\n");
+	if (map->e == 0)
+		print_error_msg("ERROR\nneed an exit\n");
 	if (map->e > 1)
 		print_error_msg("ERROR\ntoo many exits\n");
 	if (map->t == 0)
 		print_error_msg("ERROR\nneed an enemy\n");
 	if (map->t > 1)
-		print_error_msg("ERROR\ntoo many enemy\n");
+		print_error_msg("ERROR\ntoo many enemies\n");
 }
 
 void	print_error_msg(char *str)
