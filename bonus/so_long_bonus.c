@@ -3,14 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 21:31:00 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 14:29:13 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long_bonus.h"
+
+int	main(int argc, char **argv)
+{
+	t_img	img;
+	t_map	map;
+
+	if (argc != 2)
+		return (0);
+	map.mlx = mlx_init();
+	img_init(&img, map.mlx);
+	map_init(&map, &img);
+	read_map(argv[1], &map);
+	if (map.error < 0)
+		return (0);
+	find_enemy(&map);
+	map.win
+		= mlx_new_window(map.mlx, (map.wid * 50), (map.hei * 50), "so_long");
+	print_img(&map);
+	mlx_key_hook(map.win, &key_press, &map);
+	mlx_hook(map.win, RED_CROSS, 0, &click_red_cross, &map);
+	mlx_loop_hook(map.mlx, &moving_img, &map);
+	mlx_loop(map.mlx);
+	return (0);
+}
 
 void	map_init(t_map *map, t_img *img)
 {
@@ -101,26 +125,3 @@ void	print_img(t_map *map)
 	}
 }
 
-int	main(int argc, char **argv)
-{
-	t_img	img;
-	t_map	map;
-
-	if (argc != 2)
-		return (0);
-	map.mlx = mlx_init();
-	img_init(&img, map.mlx);
-	map_init(&map, &img);
-	read_map(argv[1], &map);
-	if (map.error < 0)
-		return (0);
-	find_enemy(&map);
-	map.win
-		= mlx_new_window(map.mlx, (map.wid * 50), (map.hei * 50), "so_long");
-	print_img(&map);
-	mlx_key_hook(map.win, &key_press, &map);
-	mlx_hook(map.win, RED_CROSS, 0, &click_red_cross, &map);
-	mlx_loop_hook(map.mlx, &moving_img, &map);
-	mlx_loop(map.mlx);
-	return (0);
-}
