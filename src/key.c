@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 22:27:28 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 12:48:41 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 14:05:47 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 int	key_press(int keycode, t_map *map)
 {	
-	t_param	next;
+	t_location	next;
+	t_location	player;
 
-	next.x = map->x;
-	next.y = map->y;
+	find_player(map, &player);
+	next = player;
 	if (keycode == KEY_W)
 		next.y--;
 	else if (keycode == KEY_S)
@@ -36,37 +37,62 @@ int	key_press(int keycode, t_map *map)
 		exit(0);
 	else
 		return (0);
-	change_map(map, &next);
+	change_map(map, &player, &next);
 	return (0);
 }
 
-void	change_map(t_map *map, t_param *next)
+void	find_player(t_map *map, t_location *player)
 {
-	char	*step;
+	int		h;
+	int		w;
 
+	h = 0;
+	while (h < map->hei)
+	{
+		w = 0;
+		while (w < map->wid)
+		{
+			if (map->str[h][w] == 'P')
+			{
+				player->x = w;
+				player->y = h;
+			}
+			w++;
+		}
+		h++;
+	}
+}
+
+void	change_map(t_map *map, t_location *player, t_location *next)
+{
 	if (map->str[next->y][next->x] != '1' && map->str[next->y][next->x] != 'E')
 	{
 		if (map->str[next->y][next->x] == 'C')
 			map->c--;
 		map->str[next->y][next->x] = 'P';
-		map->str[map->y][map->x] = '0';
-		map->x = next->x;
-		map->y = next->y;
-		print_img(map);
-		map->cnt++;
-		step = ft_itoa(map->cnt);
-		ft_putstr(step);
-		write(1, "\n", 1);
-		free(step);
+		map->str[player->y][player->x] = '0';
+		print_map(map);
+		player->x = next->x;
+		player->y = next->y;
+		print_step(map);
 	}
 	if (map->str[next->y][next->x] == 'E' && map->c == 0)
 	{
-		map->cnt++;
-		step = ft_itoa(map->cnt);
-		ft_putstr(step);
-		ft_putstr("\nYou Win!\n");
+		print_step(map);
+		ft_putstr("You Win!\n");
 		exit(0);
 	}
+}
+
+void	print_step(t_map *map)
+{
+	char	*step;
+	
+	map->cnt++;
+	step = ft_itoa(map->cnt);
+	ft_putstr(step);
+	write(1, "\n", 1);
+	free(step);
 }
 
 int	click_red_cross(t_map *map)

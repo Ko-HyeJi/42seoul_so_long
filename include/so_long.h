@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 13:28:43 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 14:09:33 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@
 # define KEY_D 2
 # define KEY_ESC 53
 
-typedef struct s_param
+typedef struct s_location
 {
 	int	x;
 	int	y;
-}	t_param;
+}	t_location;
 
 typedef struct s_img
 {
@@ -58,10 +58,20 @@ typedef struct s_map
 	int		c;
 	int		e;
 	int		error;
-	int		x;
-	int		y;
 	int		cnt;
 }	t_map;
+
+/* ft_split.c */
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+int		word_count(char const *s, char c);
+int		word_len(char const *s, char c);
+char	**ft_split(char const *s, char c);
+
+/* get_next_line_utils.c */
+size_t	ft_strlen(const char *s);
+char	*ft_strdup(const char *s1);
+char	*ft_substr(char const	*s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 /* get_next_line.c */
 char	*get_next_line(int fd);
@@ -70,17 +80,12 @@ char	*gnl_cut_backup(char *backup, char *return_line);
 char	*gnl_read_line(int fd);
 int		gnl_find_newline(char *read_line);
 
-/* get_next_line_utils.c */
-size_t	ft_strlen(const char *s);
-char	*ft_strdup(const char *s1);
-char	*ft_substr(char const	*s, unsigned int start, size_t len);
-char	*ft_strjoin(char const *s1, char const *s2);
-
-/* ft_split.c */
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-int		word_count(char const *s, char c);
-int		word_len(char const *s, char c);
-char	**ft_split(char const *s, char c);
+/* key.c */
+void	find_player(t_map *map, t_location *player);
+int		key_press(int keycode, t_map *map);
+void	change_map(t_map *map, t_location *player, t_location *next);
+void	print_step(t_map *map);
+int		click_red_cross(t_map *map);
 
 /* map.c */
 void	map_check_size(t_map *map);
@@ -89,23 +94,21 @@ void	map_check_element(t_map *map);
 void	read_map(char *filename, t_map *map);
 void	map_check(t_map	*map);
 
-/* key.c */
-int		key_press(int keycode, t_map *map);
-void	change_map(t_map *map, t_param *next);
-int		click_red_cross(t_map *map);
+/* print_error.c */
+void	check_element_error(t_map *map);
+void	print_error_msg(char *str);
 
-/* so_long.c */
-void	img_init(t_img *img, void *mlx);
-void	map_init(t_map *map, t_img *img);
-void	print_img(t_map *map);
+/* print_map.c */
+void	print_map(t_map *map);
+void	print_map_2(t_map *map, int w, int h);
 
 /* so_long_utils.c */
 char	*ft_strchr(const char *s, int c);
 void	ft_putstr(char *str);
 char	*ft_itoa(int n);
 
-/* error.c */
-void	check_element_error(t_map *map);
-void	print_error_msg(char *str);
+/* so_long.c */
+void	img_init(t_img *img, void *mlx);
+void	map_init(t_map *map, t_img *img);
 
 #endif
