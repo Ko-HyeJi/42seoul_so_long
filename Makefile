@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+         #
+#    By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/09 21:42:29 by hyko              #+#    #+#              #
-#    Updated: 2022/06/16 21:15:29 by hyko             ###   ########.fr        #
+#    Updated: 2022/06/17 13:06:55 by hyko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRC = $(addprefix ./src/, so_long.c\
  so_long_utils.c\
  map.c\
  key.c\
- error.c\
+ print_map.c\
+ print_error.c\
  ft_split.c\
  get_next_line.c\
  get_next_line_utils.c)

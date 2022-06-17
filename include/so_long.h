@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 13:00:58 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 13:28:43 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@
 # define KEY_S 1
 # define KEY_D 2
 # define KEY_ESC 53
+
+typedef struct s_param
+{
+	int	x;
+	int	y;
+}	t_param;
 
 typedef struct s_img
 {
@@ -56,12 +62,6 @@ typedef struct s_map
 	int		y;
 	int		cnt;
 }	t_map;
-
-typedef struct s_param
-{
-	int	x;
-	int	y;
-}	t_param;
 
 /* get_next_line.c */
 char	*get_next_line(int fd);
@@ -105,7 +105,7 @@ void	ft_putstr(char *str);
 char	*ft_itoa(int n);
 
 /* error.c */
-void	print_error_msg(t_map *map);
-void	print_error_msg_2(char *str);
+void	check_element_error(t_map *map);
+void	print_error_msg(char *str);
 
 #endif

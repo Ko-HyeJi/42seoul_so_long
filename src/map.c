@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyko <hyko@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:03:14 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/16 16:58:43 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 13:25:16 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	map_check_size(t_map *map)
 	while (map->str[i] != NULL)
 	{
 		if ((int)ft_strlen(map->str[i]) != map->wid)
-			print_error_msg_2("ERROR\nmap must be rectangular\n");
+			print_error_msg("ERROR\nmap must be rectangular\n");
 		i++;
 	}
 	map->hei = i;
@@ -41,19 +41,17 @@ void	map_check_wall(t_map *map)
 			if (h == 0 || h == map->hei - 1)
 			{
 				if (map->str[h][w] != '1')
-					map->error = -2;
+					print_error_msg("ERROR\nmap must be closed by by walls\n");
 			}
 			else if (w == 0 || w == map->wid - 1)
 			{
 				if (map->str[h][w] != '1')
-					map->error = -2;
+					print_error_msg("ERROR\nmap must be closed by by walls\n");
 			}
 			w++;
 		}
 		h++;
 	}
-	if (map->error == -2)
-		ft_putstr("ERROR\nmap must be closed by by walls\n");
 }
 
 void	map_check_element(t_map *map)
@@ -68,7 +66,7 @@ void	map_check_element(t_map *map)
 		while (w < map->wid)
 		{
 			if (ft_strchr("01PEC", map->str[h][w]) == NULL)
-				print_error_msg_2("ERROR\nmap contain invalid character\n");
+				print_error_msg("ERROR\nmap contain invalid character\n");
 			else if (map->str[h][w] == 'P')
 			{
 				map->p++;
@@ -83,6 +81,14 @@ void	map_check_element(t_map *map)
 		}
 		h++;
 	}
+	check_element_error(map);
+}
+
+void	map_check(t_map *map)
+{
+	map_check_size(map);
+	map_check_wall(map);
+	map_check_element(map);
 }
 
 void	read_map(char *filename, t_map *map)
@@ -95,7 +101,7 @@ void	read_map(char *filename, t_map *map)
 	str = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd <= 0)
-		print_error_msg_2("ERROR\nFailed To Open File\n");
+		print_error_msg("ERROR\nfailed to open file\n");
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -110,14 +116,4 @@ void	read_map(char *filename, t_map *map)
 	map->str = ft_split(str, '\n');
 	free(str);
 	map_check(map);
-}
-
-void	map_check(t_map *map)
-{
-	map_check_size(map);
-	map_check_wall(map);
-	map_check_element(map);
-	print_error_msg(map);
-	if (map->error == -1)
-		exit(0);
 }
