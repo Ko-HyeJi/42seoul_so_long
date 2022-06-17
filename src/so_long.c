@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 14:15:21 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 14:20:29 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_img	img;
-	t_map	map;₩`
+	t_map	map;
 
 	if (argc != 2)
 		print_error_msg("need a map file\n");
