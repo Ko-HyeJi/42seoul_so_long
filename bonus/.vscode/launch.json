@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [
+        ""
+      ],
+      "stopAtEntry": true,
+      "cwd": "/Users/hyeji_ko/Library/Mobile Documents/com~apple~CloudDocs/42Seoul/42cursus/so_long/bonus",
+      "environment": [],
+      "program": "/Users/hyeji_ko/Library/Mobile Documents/com~apple~CloudDocs/42Seoul/42cursus/so_long/bonus/build/Debug/outDebug",
+      "internalConsoleOptions": "openOnSessionStart",
+      "MIMode": "gdb",
+      "externalConsole": false
+    }
+  ]
+}
