@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 16:35:48 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 16:40:15 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	**ft_split(char const *s, char c);
 
 /* get_next_line.c */
 char	*get_next_line(int fd);
-int		gnlfind_newline(char *read_line);
+int		gnl_find_newline(char *read_line);
 char	*gnl_read_line(int fd);
 char	*gnl_expand_backup(char *backup, int fd);
 char	*gnl_cut_backup(char *backup, char *return_line);
