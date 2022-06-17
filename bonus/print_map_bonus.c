@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 13:36:02 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 16:10:04 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 16:18:15 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	print_step(t_map *map)
 {
 	char	*step;
 
+	ft_putstr("move : ");
 	map->cnt++;
 	step = ft_itoa(map->cnt);
 	ft_putstr(step);
