@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 14:06:11 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 15:48:38 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@
 # define KEY_D 2
 # define KEY_ESC 53
 
+typedef struct s_location
+{
+	int	x;
+	int	y;
+}	t_location;
+
 typedef struct s_img
 {
 	void	*empty;
@@ -46,30 +52,29 @@ typedef struct s_img
 
 typedef struct s_map
 {
+	t_img	*img;
+	void	*mlx;
+	void	*win;
+	char	**str;
 	int		hei;
 	int		wid;
 	int		p;
 	int		c;
 	int		e;
 	int		t;
-	char	**str;
 	int		error;
-	int		x;
-	int		y;
 	int		cnt;
-	int		direction_cnt;
-	void	*mlx;
-	void	*win;
-	t_img	*img;
-	int		enemy_x;
-	int		enemy_y;
+	int		time;
+	//int		enemy_x;
+	//int		enemy_y;
 }	t_map;
 
-typedef struct s_param
-{
-	int	x;
-	int	y;
-}	t_param;
+
+/* ft_split.c */
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+int		word_count(char const *s, char c);
+int		word_len(char const *s, char c);
+char	**ft_split(char const *s, char c);
 
 /* get_next_line.c */
 char	*get_next_line(int fd);
@@ -84,37 +89,47 @@ char	*ft_strdup(const char *s1);
 char	*ft_substr(char const	*s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 
-/* ft_split.c */
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-int		word_count(char const *s, char c);
-int		word_len(char const *s, char c);
-char	**ft_split(char const *s, char c);
+/* key.c */
+int		key_press(int keycode, t_map *map);
+void	find_player(t_map *map, t_location *player);
+void	change_map(t_map *map, t_location *player, t_location *next);
+int		click_red_cross(t_map *map);
 
 /* map.c */
-void	print_error_msg(t_map *map);
+void	read_map(char *filename, t_map *map);
+void	map_check(t_map *map);
 void	map_check_size(t_map *map);
 void	map_check_wall(t_map *map);
 void	map_check_element(t_map *map);
-void	read_map(char *filename, t_map *map);
 
-/* key.c */
-int		key_press(int keycode, t_map *map);
-void	change_map(t_map *map, t_param *next);
-int		click_red_cross(t_map *map);
+/* move.c */
+int		moving_img(t_map *map);
+void	find_enemy(t_map *map, t_location *enemy);
+void	moving_collection(t_map *map);
+void	moving_enemy(t_map *map);
+
+/* print_error.c */
+void	check_element_error(t_map *map);
+void	print_error_msg(char *str);
+
+/* print_error.c */
+void	check_element_error(t_map *map);
+void	print_error_msg(char *str);
+
+/* print_map.c */
+void	print_map(t_map *map);
+void	print_map_2(t_map *map, int w, int h);
+void	print_step(t_map *map);
+void	print_step_on_game(t_map *map);
 
 /* so_long.c */
-void	img_init(t_img *img, void *mlx);
 void	map_init(t_map *map, t_img *img);
-void	print_img(t_map *map);
+void	img_init(t_img *img, void *mlx);
 
 /* so_long_utils.c */
 char	*ft_strchr(const char *s, int c);
 void	ft_putstr(char *str);
+int		nb_len(long nb);
 char	*ft_itoa(int n);
-
-/* enemy_bonus.c */
-void	find_enemy(t_map *map);
-void	moving_enemy(t_map *map);
-int		moving_img(t_map *map);
 
 #endif

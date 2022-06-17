@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_map.c                                        :+:      :+:    :+:   */
+/*   print_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 13:36:02 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 15:43:22 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 15:51:16 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 void	print_map(t_map *map)
 {
@@ -46,9 +46,15 @@ void	print_map_2(t_map *map, int w, int h)
 	else if (map->str[h][w] == 'E')
 		mlx_put_image_to_window(
 			map->mlx, map->win, map->img->exit, w * 50, h * 50);
-	else if (map->str[h][w] == 'C')
+	else if (map->str[h][w] == 'C' && map->img->c_direction == 0)
 		mlx_put_image_to_window(
-			map->mlx, map->win, map->img->collection, w * 50, h * 50);
+			map->mlx, map->win, map->img->collection_r, w * 50, h * 50);
+	else if (map->str[h][w] == 'C' && map->img->c_direction == 1)
+		mlx_put_image_to_window(
+			map->mlx, map->win, map->img->collection_l, w * 50, h * 50);
+	else if (map->str[h][w] == 'T')
+		mlx_put_image_to_window(
+			map->mlx, map->win, map->img->enemy, w * 50, h * 50);
 }
 
 void	print_step(t_map *map)
@@ -59,5 +65,14 @@ void	print_step(t_map *map)
 	step = ft_itoa(map->cnt);
 	ft_putstr(step);
 	write(1, "\n", 1);
+	free(step);
+}
+
+void	print_step_on_game(t_map *map)
+{
+	char	*step;
+
+	step = ft_itoa(map->cnt);
+	mlx_string_put(map->mlx, map->win, 15, 25, 1, step);
 	free(step);
 }

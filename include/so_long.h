@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:42:35 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 14:09:33 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 15:43:45 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ int		gnl_find_newline(char *read_line);
 void	find_player(t_map *map, t_location *player);
 int		key_press(int keycode, t_map *map);
 void	change_map(t_map *map, t_location *player, t_location *next);
-void	print_step(t_map *map);
 int		click_red_cross(t_map *map);
 
 /* map.c */
@@ -101,6 +100,7 @@ void	print_error_msg(char *str);
 /* print_map.c */
 void	print_map(t_map *map);
 void	print_map_2(t_map *map, int w, int h);
+void	print_step(t_map *map);
 
 /* so_long_utils.c */
 char	*ft_strchr(const char *s, int c);

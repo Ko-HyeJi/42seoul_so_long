@@ -6,7 +6,7 @@
 #    By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/09 21:42:29 by hyko              #+#    #+#              #
-#    Updated: 2022/06/17 13:06:55 by hyko             ###   ########.fr        #
+#    Updated: 2022/06/17 15:01:31 by hyko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,26 +20,28 @@ MLX = -L./mlx -lmlx -framework OpenGL -framework AppKit
 %.o : %.c
 	$(CC) $(CFLAG) -c $< -o $@
 
-SRC = $(addprefix ./src/, so_long.c\
- so_long_utils.c\
- map.c\
- key.c\
- print_map.c\
- print_error.c\
- ft_split.c\
+SRC = $(addprefix ./src/, ft_split.c\
+ get_next_line_utils.c\
  get_next_line.c\
- get_next_line_utils.c)
+ key.c\
+ map.c\
+ print_error.c\
+ print_map.c\
+ so_long_utils.c\
+ so_long.c)
 
 OBJ = $(SRC:.c=.o)
 
-SRC_BN = $(addprefix ./bonus/, so_long_bonus.c\
- so_long_utils_bonus.c\
- map_bonus.c\
- key_bonus.c\
- ft_split_bonus.c\
+SRC_BN = $(addprefix ./bonus/, ft_split_bonus.c\
  get_next_line_bonus.c\
  get_next_line_utils_bonus.c\
- moving_bonus.c)
+ key_bonus.c\
+ map_bonus.c\
+ move_bonus.c\
+ print_error_bonus.c\
+ print_map_bonus.c\
+ so_long_bonus.c\
+ so_long_utils_bonus.c)
 
 OBJ_BN = $(SRC_BN:.c=.o)
 

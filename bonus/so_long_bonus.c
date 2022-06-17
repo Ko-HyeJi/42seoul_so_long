@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:41:07 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 14:29:13 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 15:20:12 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,25 @@ int	main(int argc, char **argv)
 	t_map	map;
 
 	if (argc != 2)
-		return (0);
+		print_error_msg("need a map file\n");
 	map.mlx = mlx_init();
 	img_init(&img, map.mlx);
 	map_init(&map, &img);
 	read_map(argv[1], &map);
-	if (map.error < 0)
-		return (0);
-	find_enemy(&map);
+	//find_enemy(&map);
 	map.win
-		= mlx_new_window(map.mlx, (map.wid * 50), (map.hei * 50), "so_long");
-	print_img(&map);
+		= mlx_new_window(map.mlx, (map.wid * 50), (map.hei * 50), "so_long_bonus");
 	mlx_key_hook(map.win, &key_press, &map);
 	mlx_hook(map.win, RED_CROSS, 0, &click_red_cross, &map);
 	mlx_loop_hook(map.mlx, &moving_img, &map);
+	print_map(&map);
 	mlx_loop(map.mlx);
 	return (0);
 }
 
 void	map_init(t_map *map, t_img *img)
 {
+	map->img = img;
 	map->hei = 0;
 	map->wid = 0;
 	map->p = 0;
@@ -45,11 +44,8 @@ void	map_init(t_map *map, t_img *img)
 	map->e = 0;
 	map->t = 0;
 	map->error = 0;
-	map->x = 0;
-	map->y = 0;
 	map->cnt = 0;
-	map->img = img;
-	map->direction_cnt = 0;
+	map->time = 0;
 }
 
 void	img_init(t_img *img, void *mlx)
@@ -79,49 +75,3 @@ void	img_init(t_img *img, void *mlx)
 	img->c_direction = 0;
 	img->e_direction = 0;
 }
-
-void	print_img_2(t_map *map, int w, int h)
-{
-	mlx_put_image_to_window(
-		map->mlx, map->win, map->img->empty, w * 50, h * 50);
-	if (map->str[h][w] == '1')
-		mlx_put_image_to_window(
-			map->mlx, map->win, map->img->wall, w * 50, h * 50);
-	else if (map->str[h][w] == 'P' && map->img->p_direction == 0)
-		mlx_put_image_to_window(
-			map->mlx, map->win, map->img->player_r, w * 50, h * 50);
-	else if (map->str[h][w] == 'P' && map->img->p_direction == 1)
-		mlx_put_image_to_window(
-			map->mlx, map->win, map->img->player_l, w * 50, h * 50);
-	else if (map->str[h][w] == 'E')
-		mlx_put_image_to_window(
-			map->mlx, map->win, map->img->exit, w * 50, h * 50);
-	else if (map->str[h][w] == 'C' && map->img->c_direction == 0)
-		mlx_put_image_to_window(
-			map->mlx, map->win, map->img->collection_r, w * 50, h * 50);
-	else if (map->str[h][w] == 'C' && map->img->c_direction == 1)
-		mlx_put_image_to_window(
-			map->mlx, map->win, map->img->collection_l, w * 50, h * 50);
-	else if (map->str[h][w] == 'T')
-		mlx_put_image_to_window(
-			map->mlx, map->win, map->img->enemy, w * 50, h * 50);	
-}
-
-void	print_img(t_map *map)
-{
-	int		h;
-	int		w;
-
-	h = 0;
-	while (h < map->hei)
-	{
-		w = 0;
-		while (w < map->wid)
-		{
-			print_img_2(map, w, h);
-			w++;
-		}
-		h++;
-	}
-}
-

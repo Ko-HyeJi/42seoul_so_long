@@ -6,7 +6,7 @@
 /*   By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 22:27:28 by hyko              #+#    #+#             */
-/*   Updated: 2022/06/17 14:30:31 by hyko             ###   ########.fr       */
+/*   Updated: 2022/06/17 15:43:16 by hyko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,6 @@ void	change_map(t_map *map, t_location *player, t_location *next)
 		ft_putstr("You Win!\n");
 		exit(0);
 	}
-}
-
-void	print_step(t_map *map)
-{
-	char	*step;
-
-	map->cnt++;
-	step = ft_itoa(map->cnt);
-	ft_putstr(step);
-	write(1, "\n", 1);
-	free(step);
 }
 
 int	click_red_cross(t_map *map)
