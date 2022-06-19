@@ -6,19 +6,19 @@
 #    By: hyko <hyko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/09 21:42:29 by hyko              #+#    #+#              #
-#    Updated: 2022/06/17 15:01:31 by hyko             ###   ########.fr        #
+#    Updated: 2022/06/19 17:55:30 by hyko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 CC = cc
-CFLAG = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 MLX = -L./mlx -lmlx -framework OpenGL -framework AppKit
 
 %.o : %.c
-	$(CC) $(CFLAG) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 SRC = $(addprefix ./src/, ft_split.c\
  get_next_line_utils.c\
